@@ -27,11 +27,15 @@ English & <<bench_variants_en_base>> & <<bench_variants_en_paraphrase>> & <<benc
 Arabic & <<bench_variants_ar_base>> & <<bench_variants_ar_paraphrase>> & <<bench_variants_ar_edit>> & <<bench_variants_ar>> \\
 Code-switched & <<bench_variants_mix_base>> & <<bench_variants_mix_paraphrase>> & <<bench_variants_mix_edit>> & <<bench_variants_mix>> \\
 \midrule
-\multicolumn{5}{l}{\emph{Splits and review}} \\
+\multicolumn{5}{l}{\emph{Splits, review set and decisions (agree, disagree, unsure)}} \\
 dev (seeds, variants) & <<bench_seeds_dev>> & <<bench_variants_dev>> & & \\
 test (seeds, variants) & <<bench_seeds_test>> & <<bench_variants_test>> & & \\
 excluded variants (near duplicates) & <<bench_variants_excluded>> & & & \\
-review status unreviewed (variants) & <<bench_review_status_unreviewed>> & & & \\
-author review set (rows) & <<bench_review_rows>> & & & \\
+review set (rows) & <<bench_review_rows>> & & & \\
+author decisions & <<bench_review_outcome_author_agree>> & <<bench_review_outcome_author_disagree>> & <<bench_review_outcome_author_unsure>> & \\
+\midrule
+\multicolumn{5}{l}{\emph{Review status (English, Arabic, code-switched, total)}} \\
+author-reviewed & <<bench_review_status_author_reviewed_en>> & <<bench_review_status_author_reviewed_ar>> & <<bench_review_status_author_reviewed_mix>> & <<bench_review_status_author_reviewed>> \\
+unreviewed & <<bench_review_status_unreviewed_en>> & <<bench_review_status_unreviewed_ar>> & <<bench_review_status_unreviewed_mix>> & <<bench_review_status_unreviewed>> \\
 \bottomrule
 \end{tabular}

@@ -888,6 +888,97 @@ def test_review_set_rows_of_other_languages_stay_unreviewed(tmp_path: Path) -> N
     assert all(r["label_status"] == "author-reviewed" for r in rows if r["lang"] == "en")
 
 
+def test_review_outcome_marks_the_listed_variants(tmp_path: Path) -> None:
+    seeds = corpus({"ordinary_valid": 4, "ambiguous": 2})
+    first = export_mod.export_benchmark(seeds, out_dir=tmp_path)
+    with open(tmp_path / "review_set.csv", "r", encoding="utf-8-sig", newline="") as handle:
+        sample = list(csv.DictReader(handle))
+    chosen = [r for lang in LANGS for r in [x for x in sample if x["lang"] == lang][:2]]
+    assert len(chosen) == 6
+    lines = ["variant_id,lang,decision,reviewer,date"] + [f"{r['variant_id']},{r['lang']},agree,author,2026-10-31" for r in chosen]
+    (tmp_path / "review_outcome.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    export_mod.export_benchmark(seeds, out_dir=tmp_path)
+    rows = [json.loads(l) for l in (tmp_path / "benchmark.jsonl").read_text(encoding="utf-8").splitlines()]
+    status = {r["variant_id"]: r["review_status"] for r in rows}
+    chosen_ids = {r["variant_id"] for r in chosen}
+    assert all(status[i] == "author-reviewed" for i in chosen_ids)
+    assert all(s == "unreviewed" for i, s in status.items() if i not in chosen_ids)
+    pair_of = {r["variant_id"]: r["pair_id"] for r in rows}
+    siblings = [i for i in status if i not in chosen_ids and pair_of[i] in {pair_of[c] for c in chosen_ids}]
+    assert siblings and all(status[i] == "unreviewed" for i in siblings)
+    with open(tmp_path / "review_set.csv", "r", encoding="utf-8-sig", newline="") as handle:
+        after = list(csv.DictReader(handle))
+    assert [r["variant_id"] for r in after] == [r["variant_id"] for r in sample]
+    assert {r["variant_id"]: r["label_status"] for r in after} == {r["variant_id"]: ("author-reviewed" if r["variant_id"] in chosen_ids else "unreviewed") for r in sample}
+    assert all(r["reviewer_decision"] == "" and r["reviewer_notes"] == "" for r in after)
+    with open(tmp_path / "adjudication_sheet.csv", "r", encoding="utf-8-sig", newline="") as handle:
+        adj = list(csv.DictReader(handle))
+    assert list(adj[0].keys()) == list(export_mod.ADJUDICATION_COLUMNS)
+    assert all(r["reviewer_a_decision"] == "" and r["reviewer_b_decision"] == "" and r["agreement"] == "" for r in adj)
+    hashes = json.loads((tmp_path / "hashes.json").read_text(encoding="utf-8"))
+    assert "review_outcome.csv" in hashes and all(export_mod.verify_hashes(tmp_path).values())
+    assert hashes["scenarios.jsonl"] == first.hashes["scenarios.jsonl"] and hashes["splits.json"] == first.hashes["splits.json"]
+    assert hashes["adjudication_sheet.csv"] == first.hashes["adjudication_sheet.csv"]
+    assert hashes["benchmark.jsonl"] != first.hashes["benchmark.jsonl"] and hashes["review_set.csv"] != first.hashes["review_set.csv"]
+    report = json.loads((tmp_path / "build_report.json").read_text(encoding="utf-8"))
+    outcome = report["review_outcome"]
+    assert outcome["file"] == "review_outcome.csv" and outcome["rows"] == 6 and outcome["rows_in_review_set"] == 6
+    assert outcome["decisions"] == {"agree": 6, "disagree": 0, "unsure": 0} and outcome["reviewers"] == {"author": 6}
+    assert outcome["dates"] == ["2026-10-31"]
+    assert outcome["variants_by_applied_status"] == {"author-reviewed": 6}
+    assert outcome["variants_by_applied_status_and_lang"] == {"author-reviewed": {"en": 2, "ar": 2, "mix": 2}}
+    guide = (tmp_path / "annotation_guide.md").read_text(encoding="utf-8")
+    assert "on 2026-10-31" in guide and "no disagreement" in guide and "review_outcome.csv" in guide
+    assert "6 agree, 0 disagree, 0 unsure decisions" in guide
+    assert f"the remaining {len(rows) - 6} variants keep the status unreviewed" in guide
+    assert chr(0x2014) not in guide and chr(0x2013) not in guide
+
+
+def test_review_outcome_decisions_and_errors(tmp_path: Path) -> None:
+    seeds = corpus({"ordinary_valid": 2})
+    variants = render_mod.build_all_variants(seeds)
+    ids = [v.variant_id for v in variants]
+    outcome = [
+        export_mod.ReviewOutcome(ids[0], variants[0].lang, "agree", "author", "2026-10-31"),
+        export_mod.ReviewOutcome(ids[1], variants[1].lang, "disagree", "author", "2026-10-31"),
+        export_mod.ReviewOutcome(ids[2], variants[2].lang, "agree", "second-reviewer", "2026-11-02"),
+        export_mod.ReviewOutcome(ids[3], variants[3].lang, "agree", "author", "2026-10-31"),
+        export_mod.ReviewOutcome(ids[3], variants[3].lang, "agree", "second-reviewer", "2026-11-02"),
+        export_mod.ReviewOutcome(ids[4], variants[4].lang, "unsure", "author", "2026-10-31"),
+    ]
+    updated, applied = export_mod.apply_review_outcome(variants, outcome)
+    assert applied == {ids[0]: "author-reviewed", ids[3]: "second-reviewer"}
+    by_id = {v.variant_id: v for v in updated}
+    assert by_id[ids[0]].review_status == "author-reviewed" and by_id[ids[3]].review_status == "second-reviewer"
+    assert by_id[ids[1]].review_status == by_id[ids[2]].review_status == by_id[ids[4]].review_status == "unreviewed"
+    assert all(v.review_status == "unreviewed" for v in updated if v.variant_id not in applied)
+    assert [v.variant_id for v in updated] == ids
+    with pytest.raises(ValueError, match="not a variant"):
+        export_mod.apply_review_outcome(variants, [export_mod.ReviewOutcome("nope.t0.en.base", "en", "agree", "author", "2026-10-31")])
+    other = "ar" if variants[0].lang != "ar" else "en"
+    with pytest.raises(ValueError, match="language"):
+        export_mod.apply_review_outcome(variants, [export_mod.ReviewOutcome(ids[0], other, "agree", "author", "2026-10-31")])
+    path = tmp_path / "review_outcome.csv"
+    good = "variant_id,lang,decision,reviewer,date\n" + f"{ids[0]},{variants[0].lang},agree,author,2026-10-31\n"
+    path.write_text(good, encoding="utf-8")
+    assert export_mod.load_review_outcome(path) == [outcome[0]]
+    for bad, message in (
+        (good.replace("agree", "maybe"), "decision"),
+        (good.replace("author", "editor"), "reviewer"),
+        (good.replace("2026-10-31", "31/10/2026"), "date"),
+        (good.replace(",author,", ",,"), "reviewer"),
+        (good + f"{ids[0]},{variants[0].lang},agree,author,2026-10-31\n", "second row"),
+        ("variant_id,decision\nx,agree\n", "columns"),
+    ):
+        path.write_text(bad, encoding="utf-8")
+        with pytest.raises(ValueError, match=message):
+            export_mod.load_review_outcome(path)
+    report = export_mod.review_outcome_report(outcome, applied, [])
+    assert report["rows"] == 6 and report["decisions"] == {"agree": 4, "disagree": 1, "unsure": 1}
+    assert report["reviewers"] == {"author": 4, "second-reviewer": 2} and report["dates"] == ["2026-10-31", "2026-11-02"]
+    assert report["variants_by_applied_status"] == {"author-reviewed": 1, "second-reviewer": 1} and report["rows_in_review_set"] == 0
+
+
 def test_within_split_duplicate_pairs_are_counted(tmp_path: Path) -> None:
     pairs = [
         split_mod.NearDuplicate("a.t0.en.base", "b.t0.en.base", "a", "b", "en", 1.0, "exact"),

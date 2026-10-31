@@ -169,9 +169,11 @@ def toy_root(tmp_path_factory: pytest.TempPathFactory) -> Path:
     for seed, fam in SEEDS.items():
         for lang in LANGS + ("mix",):
             for kind in ("base", "paraphrase", "edit"):
-                variants.append({"variant_id": f"{seed}.t0.{lang}.{kind}", "seed_id": seed, "family": fam, "lang": lang, "kind": kind, "split": "dev" if seed == "s1" else "test", "review_status": "unreviewed", "dialect_extra": False})
+                reviewed = (seed, lang, kind) == ("s1", "ar", "base")
+                variants.append({"variant_id": f"{seed}.t0.{lang}.{kind}", "seed_id": seed, "family": fam, "lang": lang, "kind": kind, "split": "dev" if seed == "s1" else "test", "review_status": "author-reviewed" if reviewed else "unreviewed", "dialect_extra": False})
     _write_jsonl(data / "benchmark.jsonl", variants)
-    (data / "review_set.csv").write_text("variant_id,label_status\ns1.t0.ar.base,unreviewed\ns2.t0.ar.base,unreviewed\n", encoding="utf-8")
+    (data / "review_set.csv").write_text("variant_id,label_status\ns1.t0.ar.base,author-reviewed\ns2.t0.ar.base,unreviewed\n", encoding="utf-8")
+    (data / "review_outcome.csv").write_text("variant_id,lang,decision,reviewer,date\ns1.t0.ar.base,ar,agree,author,2026-10-31\n", encoding="utf-8")
     (data / "build_report.json").write_text(json.dumps({"n_near_duplicate_pairs": 2, "n_dialect_extra_seeds": 0}), encoding="utf-8")
     return root
 
@@ -199,7 +201,8 @@ def test_ledger_claim_ids_and_hand_checked_values(built: tuple[ledger_mod.Ledger
                 "live_executions_toy_all_promptonly", "live_confirmations_toy_all_tasdiq",
                 "h5_reproposal_toy", "sec_reproposal_lang_diff_ar_minus_en_toy_promptonly", "lat_model_direct_toy_median", "lat_model_live_toy_p95",
                 "mem_peak_rss_bytes_capture", "ver_violations_TasdiqNonAtomic_invalidate_d4", "bench_seeds_total", "bench_variants_ar_edit",
-                "bench_seeds_dev", "bench_review_rows", "cal_window_s_B4", "cal_windows_swept",
+                "bench_seeds_dev", "bench_review_rows", "bench_review_status_author_reviewed", "bench_review_status_unreviewed_en",
+                "bench_review_outcome_rows", "bench_review_outcome_author_agree", "bench_review_outcome_author_date", "cal_window_s_B4", "cal_windows_swept",
                 "lat_monitor_trace_median", "lat_monitor_trace_p95", "lat_monitor_trace_n"):
         assert cid in ledger, cid
     # Monitor hook timings of the trace track: three timed calls per session, read from monitor_seconds.
@@ -253,6 +256,16 @@ def test_ledger_claim_ids_and_hand_checked_values(built: tuple[ledger_mod.Ledger
     assert ledger.get("ver_violations_TasdiqNonAtomic_invalidate_d4").value == 3
     assert ledger.get("bench_seeds_total").value == 4 and ledger.get("bench_variants_ar_edit").value == 4
     assert ledger.get("bench_seeds_dev").value == 1 and ledger.get("bench_review_rows").value == 2
+    # Review status per variant and the recorded review decisions: one Arabic variant reviewed by the author.
+    assert ledger.get("bench_review_status_author_reviewed").value == 1 and ledger.get("bench_review_status_author_reviewed_ar").value == 1
+    assert ledger.get("bench_review_status_author_reviewed_en").value == 0
+    assert ledger.get("bench_review_status_unreviewed").value == len(SEEDS) * (len(LANGS) + 1) * 3 - 1
+    assert ledger.get("bench_review_status_unreviewed_ar").value == len(SEEDS) * 3 - 1
+    assert ledger.get("bench_review_outcome_rows").value == 1 and ledger.get("bench_review_outcome_author_rows").value == 1
+    assert ledger.get("bench_review_outcome_author_agree").value == 1 and ledger.get("bench_review_outcome_author_disagree").value == 0 and ledger.get("bench_review_outcome_author_unsure").value == 0
+    assert ledger.get("bench_review_outcome_author_date").value == "2026-10-31" and ledger.get("bench_review_outcome_date").value == "2026-10-31"
+    assert manifest["groups"]["benchmark"]["review_statuses"] == ["author-reviewed", "unreviewed"]
+    assert manifest["groups"]["benchmark"]["review_outcome_reviewers"] == ["author"]
     # Verdicts carry one of the three outcomes and the manifest names every run.
     for k in range(1, 6):
         assert ledger.get(f"h{k}_verdict").value in ("supports", "refutes", "inconclusive")
@@ -346,6 +359,10 @@ def test_fill_tables_from_toy_ledger(toy_root: Path, built: tuple[ledger_mod.Led
     assert "scenario runs (count) &" in rates and "T-inv" in rates
     cost = (out / "tasdiq_tab_cost.tex").read_text(encoding="utf-8")
     assert "live & & & & 1.80" in cost
+    benchmark = (out / "tasdiq_tab_benchmark.tex").read_text(encoding="utf-8")
+    assert "Splits, review set and decisions (agree, disagree, unsure)" in benchmark and "author decisions & 1 & 0 & 0 &" in benchmark
+    assert "Review status (English, Arabic, code-switched, total)" in benchmark
+    assert "author-reviewed & 0 & 1 & 0 & 1" in benchmark and "unreviewed & 12 & 11 & 12 & 35" in benchmark
     # Existing templates are kept; refreshing rewrites them.
     marker = templates / "tasdiq_tab_cost.tex"
     marker.write_text("% kept\n<<bench_seeds_total>>\n", encoding="utf-8")

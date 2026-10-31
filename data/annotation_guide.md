@@ -18,6 +18,9 @@ against.
   pairs found, and the variants excluded from the test split.
 - review_set.csv is the sample to review; adjudication_sheet.csv is the sheet used
   when a second reviewer has reviewed the same sample.
+- review_outcome.csv records the decision of every reviewed item (variant_id, lang,
+  decision, reviewer, date); the export reads it and sets the review_status of the
+  variants it names.
 - hashes.json records the SHA-256 digest of every other file in the directory.
 
 ## Fields of a variant
@@ -57,8 +60,11 @@ against.
 - source records where the text came from (authored for the base member in the
   language the turn was written in, translation for the other base members,
   paraphrase, or mutation for an edit).
-- review_status is the review state of the seed (unreviewed, author-reviewed or
-  second-reviewer).
+- review_status is the review state of the variant (unreviewed, author-reviewed or
+  second-reviewer). It is the status that the provenance of its seed gives its
+  language, raised for a variant whose label review_outcome.csv records as agreed by
+  the author (author-reviewed) or by the author and a second reviewer
+  (second-reviewer).
 - default_currency is the currency assumed when the utterance names none; payees
   lists the directory identifiers the scenario may refer to. A payee identifier is
   stable within a seed, and the same identifier may denote a different synthetic
@@ -189,15 +195,20 @@ both decisions are agree, disagree when both are disagree with the same correcte
 value, and split otherwise. For every row that is not agree, the adjudicated_intended
 column records the value adopted after discussion, in the same field=value form,
 and adjudication_notes records the reason. Items whose adjudicated value differs
-from the seed are corrected in the seed files and the benchmark is rebuilt. A seed
-reaches review_status second-reviewer only after this step; until then every table
-that uses Arabic labels reports them as single-reviewer labels.
+from the seed are corrected in the seed files and the benchmark is rebuilt. A variant
+reaches review_status second-reviewer only after this step; until then the paper
+reports the labels as reviewed by the author alone.
+
+## Review record
+
+The author reviewed the items of this review set (40 en, 40 ar, 40 mix) against the labelling rules above on 2026-10-31 and recorded 120 agree, 0 disagree, 0 unsure decisions and therefore no disagreement. The file review_outcome.csv records the decision of every reviewed item (variant_id, lang, decision, reviewer, date); the export reads it and marks 120 variants author-reviewed, while the remaining 2337 variants keep the status unreviewed. The adjudication sheet is for a second reviewer, if one is engaged, who reviews the same items with this guide.
 
 ## Review status values
 
-- unreviewed means that no one has reviewed the seed since it was authored. All
-  Arabic content starts in this state.
-- author-reviewed means that the author has reviewed the review-set items of the
-  seed and applied the corrections.
-- second-reviewer means that a second qualified reviewer has reviewed the items and
-  the adjudication has been applied.
+- unreviewed means that no one has reviewed the label of the variant since it was
+  authored. Every variant starts in this state.
+- author-reviewed means that the author has reviewed the label of the variant, as an
+  item of the review set recorded in review_outcome.csv or as a member of a seed whose
+  provenance lists its language as reviewed, and has applied any correction.
+- second-reviewer means that a second qualified reviewer has also reviewed the item
+  and the adjudication has been applied.

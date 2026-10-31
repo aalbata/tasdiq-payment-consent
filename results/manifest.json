@@ -1,5 +1,5 @@
 {
-  "claims": 18950,
+  "claims": 18964,
   "exploratory_family": [
     "sec_reproposal_lang_diff_ar_minus_en_qwen25_promptonly",
     "sec_duplicate_lang_diff_ar_minus_en_qwen25_promptonly",
@@ -38,6 +38,13 @@
         "ar",
         "en",
         "mix"
+      ],
+      "review_outcome_reviewers": [
+        "author"
+      ],
+      "review_statuses": [
+        "author-reviewed",
+        "unreviewed"
       ]
     },
     "capture": {
@@ -444,7 +451,7 @@
       "track": "live"
     },
     {
-      "code_hash": "9863d8538d23a41ce5f2999120c24bbe5cb92b0c00698822a1eb79291a0c2108",
+      "code_hash": "efd29ccf101b26c877411df0d21e4fb1f060ad71409d7074f1b77a9197ceb956",
       "config_hash": "3ed620b1e9dc5251dc7a32e4afded8c9b488df3961861582b4f43e807d634227",
       "elapsed_seconds": 641.2426176071167,
       "path": "results/verify/full_verify",

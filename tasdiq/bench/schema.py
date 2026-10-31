@@ -531,7 +531,9 @@ class Provenance:
 
     review_status is the status of the seed's English content; reviewed_langs lists the
     further languages whose content has been reviewed to that status. The Arabic and
-    code-switched members of a seed stay unreviewed until their language is listed.
+    code-switched members of a seed stay unreviewed until their language is listed. The
+    export raises the status of individual variants whose labels review_outcome.csv
+    records as reviewed (tasdiq.bench.export.apply_review_outcome).
     """
 
     authored_by: str

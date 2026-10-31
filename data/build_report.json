@@ -55,5 +55,31 @@
   "n_near_duplicate_pairs": 62,
   "n_seeds": 102,
   "n_variants": 2457,
+  "review_outcome": {
+    "dates": [
+      "2026-10-31"
+    ],
+    "decisions": {
+      "agree": 120,
+      "disagree": 0,
+      "unsure": 0
+    },
+    "file": "review_outcome.csv",
+    "reviewers": {
+      "author": 120
+    },
+    "rows": 120,
+    "rows_in_review_set": 120,
+    "variants_by_applied_status": {
+      "author-reviewed": 120
+    },
+    "variants_by_applied_status_and_lang": {
+      "author-reviewed": {
+        "ar": 40,
+        "en": 40,
+        "mix": 40
+      }
+    }
+  },
   "review_rows": 120
 }

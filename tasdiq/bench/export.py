@@ -1,27 +1,33 @@
 """Benchmark export: data files, review set, annotation guide and adjudication sheet.
 
 export_benchmark builds the variants of every seed, assigns the seed-level split,
-detects near duplicates, and writes the benchmark files into one directory. Every
-file is written deterministically (sorted keys, uniform line endings), and hashes.json
-records the SHA-256 digest of every other file written.
+detects near duplicates, applies the recorded review decisions of review_outcome.csv to
+the review status of the variants they name, and writes the benchmark files into one
+directory. Every file is written deterministically (sorted keys, uniform line endings),
+and hashes.json records the SHA-256 digest of every other file in the directory, the
+review outcome file included.
 """
 
 from __future__ import annotations
 
 import argparse
 import csv
+import datetime
 import hashlib
 import json
 import random
-from dataclasses import dataclass, field
+import shutil
+from collections import Counter
+from dataclasses import dataclass, field, replace
 from pathlib import Path
-from typing import Any, Iterable, Sequence
+from typing import Any, Iterable, Mapping, Sequence
 
 from tasdiq.bench.render import Variant, build_all_variants
 from tasdiq.bench.schema import (
     AMBIGUOUS_FIELDS,
     FAMILIES,
     LANGS,
+    REVIEW_STATUSES,
     Ambiguous,
     IntendedBatch,
     IntendedRecord,
@@ -52,6 +58,7 @@ REVIEW_SET_FILE = "review_set.csv"
 ANNOTATION_GUIDE_FILE = "annotation_guide.md"
 ADJUDICATION_SHEET_FILE = "adjudication_sheet.csv"
 BUILD_REPORT_FILE = "build_report.json"
+REVIEW_OUTCOME_FILE = "review_outcome.csv"
 
 INTENDED_COLUMNS: tuple[str, ...] = (
     "intended_payee_id",
@@ -96,6 +103,115 @@ ADJUDICATION_COLUMNS: tuple[str, ...] = (
 
 REVIEWER_DECISIONS: tuple[str, ...] = ("agree", "disagree", "unsure")
 
+REVIEW_OUTCOME_COLUMNS: tuple[str, ...] = ("variant_id", "lang", "decision", "reviewer", "date")
+
+REVIEWER_STATUS: dict[str, str] = {"author": "author-reviewed", "second-reviewer": "second-reviewer"}
+"""The reviewer named in a review outcome row and the review status that the reviewer's agreement confers."""
+
+_STATUS_RANK: dict[str, int] = {status: rank for rank, status in enumerate(REVIEW_STATUSES)}
+
+
+@dataclass(frozen=True)
+class ReviewOutcome:
+    """One recorded review decision: a reviewer's decision on the label of one variant on one date."""
+
+    variant_id: str
+    lang: str
+    decision: str
+    reviewer: str
+    date: str
+
+    def to_dict(self) -> dict[str, str]:
+        return {"variant_id": self.variant_id, "lang": self.lang, "decision": self.decision, "reviewer": self.reviewer, "date": self.date}
+
+
+def load_review_outcome(path: Path | str) -> list[ReviewOutcome]:
+    """Read the review outcome file: one row per reviewed variant and reviewer.
+
+    The columns are variant_id, lang, decision (agree, disagree or unsure), reviewer (author
+    or second-reviewer) and date (an ISO 8601 calendar date). A ValueError names the first
+    malformed row; a variant may carry at most one row per reviewer.
+    """
+    path = Path(path)
+    rows: list[ReviewOutcome] = []
+    seen: set[tuple[str, str]] = set()
+    with open(path, "r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if tuple(reader.fieldnames or ()) != REVIEW_OUTCOME_COLUMNS:
+            raise ValueError(f"{path.name}: the columns must be {', '.join(REVIEW_OUTCOME_COLUMNS)}")
+        for line_no, raw in enumerate(reader, start=2):
+            row = ReviewOutcome(**{column: (raw.get(column) or "").strip() for column in REVIEW_OUTCOME_COLUMNS})
+            if not row.variant_id:
+                raise ValueError(f"{path.name} line {line_no}: empty variant_id")
+            if row.lang not in LANGS:
+                raise ValueError(f"{path.name} line {line_no}: lang {row.lang!r} is not one of {', '.join(LANGS)}")
+            if row.decision not in REVIEWER_DECISIONS:
+                raise ValueError(f"{path.name} line {line_no}: decision {row.decision!r} is not one of {', '.join(REVIEWER_DECISIONS)}")
+            if row.reviewer not in REVIEWER_STATUS:
+                raise ValueError(f"{path.name} line {line_no}: reviewer {row.reviewer!r} is not one of {', '.join(REVIEWER_STATUS)}")
+            try:
+                datetime.date.fromisoformat(row.date)
+            except ValueError as error:
+                raise ValueError(f"{path.name} line {line_no}: date {row.date!r} is not an ISO 8601 calendar date") from error
+            key = (row.variant_id, row.reviewer)
+            if key in seen:
+                raise ValueError(f"{path.name} line {line_no}: a second row for {row.variant_id} by {row.reviewer}")
+            seen.add(key)
+            rows.append(row)
+    return rows
+
+
+def apply_review_outcome(variants: Sequence[Variant], outcome: Sequence[ReviewOutcome]) -> tuple[list[Variant], dict[str, str]]:
+    """Return the variants with the review status the recorded decisions give them, and the statuses applied.
+
+    A variant whose label the author agreed with becomes author-reviewed, and one that the
+    author and the second reviewer both agreed with becomes second-reviewer; a status that
+    the provenance of the seed already gives is never lowered. A disagree or unsure decision
+    leaves the status unchanged, since the label is confirmed only once the seed has been
+    corrected and reviewed again. Every row must name a variant of the benchmark in the
+    language the row states.
+    """
+    by_id = {v.variant_id: v for v in variants}
+    agreed: dict[str, set[str]] = {}
+    for row in outcome:
+        variant = by_id.get(row.variant_id)
+        if variant is None:
+            raise ValueError(f"review outcome names {row.variant_id}, which is not a variant of the benchmark")
+        if variant.lang != row.lang:
+            raise ValueError(f"review outcome row {row.variant_id} states language {row.lang}; the variant is in {variant.lang}")
+        if row.decision == "agree":
+            agreed.setdefault(row.variant_id, set()).add(row.reviewer)
+    applied: dict[str, str] = {}
+    for variant_id, reviewers in agreed.items():
+        if "author" not in reviewers:
+            continue
+        status = "second-reviewer" if "second-reviewer" in reviewers else "author-reviewed"
+        if _STATUS_RANK[status] > _STATUS_RANK[by_id[variant_id].review_status]:
+            applied[variant_id] = status
+    updated = [replace(v, review_status=applied[v.variant_id]) if v.variant_id in applied else v for v in variants]
+    return updated, applied
+
+
+def review_outcome_report(outcome: Sequence[ReviewOutcome], applied: Mapping[str, str], review: Sequence[Variant]) -> dict[str, Any]:
+    """Counts of the recorded decisions and of the statuses they conferred, for build_report.json."""
+    review_ids = {v.variant_id for v in review}
+    lang_of = {row.variant_id: row.lang for row in outcome}
+    by_status_lang: dict[str, dict[str, int]] = {}
+    for variant_id, status in applied.items():
+        by_status_lang.setdefault(status, {})
+        lang = lang_of[variant_id]
+        by_status_lang[status][lang] = by_status_lang[status].get(lang, 0) + 1
+    return {
+        "file": REVIEW_OUTCOME_FILE if outcome else None,
+        "rows": len(outcome),
+        "decisions": {decision: sum(1 for r in outcome if r.decision == decision) for decision in REVIEWER_DECISIONS},
+        "reviewers": {reviewer: sum(1 for r in outcome if r.reviewer == reviewer) for reviewer in sorted({r.reviewer for r in outcome})},
+        "dates": sorted({r.date for r in outcome}),
+        "rows_in_review_set": sum(1 for r in outcome if r.variant_id in review_ids),
+        "variants_by_applied_status": dict(sorted(Counter(applied.values()).items())),
+        "variants_by_applied_status_and_lang": {status: {lang: by_status_lang[status].get(lang, 0) for lang in LANGS} for status in sorted(by_status_lang)},
+    }
+
 
 @dataclass
 class ExportResult:
@@ -123,13 +239,17 @@ def export_benchmark(
     review_seed: int = DEFAULT_SPLIT_SEED,
     jaccard_threshold: float = DEFAULT_JACCARD_THRESHOLD,
     strict_content: bool = False,
+    review_outcome: Path | str | None = None,
 ) -> ExportResult:
     """Write the benchmark files for the given seeds into out_dir.
 
     Seeds flagged dialect_extra are written to scenarios.jsonl and dialect_extra.jsonl
     only; they receive no split and enter no result file. With strict_content the
     corpus-level content requirements must all hold, otherwise a ValueError lists
-    the unmet ones.
+    the unmet ones. The review decisions of review_outcome (by default the file
+    review_outcome.csv in out_dir, when it exists) set the review status of the
+    variants they name; a file given from elsewhere is copied into out_dir under that
+    name, so that the directory stays self-contained and hashes.json covers it.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -143,6 +263,13 @@ def export_benchmark(
     splits = assign_splits(main, dev_fraction=dev_fraction, seed=split_seed)
     variants = build_all_variants(main)
     extra_variants = build_all_variants(extra)
+    outcome_path = out_dir / REVIEW_OUTCOME_FILE
+    if review_outcome is not None:
+        given = Path(review_outcome)
+        if given.resolve() != outcome_path.resolve():
+            shutil.copyfile(given, outcome_path)
+    outcome = load_review_outcome(outcome_path) if outcome_path.is_file() else []
+    variants, applied = apply_review_outcome(variants, outcome)
     duplicates = find_near_duplicates(variants, threshold=jaccard_threshold)
     excluded = cross_split_exclusions(duplicates, splits)
 
@@ -174,13 +301,19 @@ def export_benchmark(
     review = select_review_set(variants, per_lang=review_per_lang, seed=review_seed)
     by_seed = {s.seed_id: s for s in main}
     for v in review:
+        if v.variant_id in applied:
+            continue
         if v.lang != "en" and v.lang not in by_seed[v.seed_id].provenance.reviewed_langs and v.review_status != "unreviewed":
             raise ValueError(f"review row {v.variant_id} of language {v.lang} is marked {v.review_status} although the language is not listed as reviewed")
     files[REVIEW_SET_FILE] = _write_csv(out_dir / REVIEW_SET_FILE, REVIEW_COLUMNS, (_review_row(v) for v in review))
     files[ADJUDICATION_SHEET_FILE] = _write_csv(
         out_dir / ADJUDICATION_SHEET_FILE, ADJUDICATION_COLUMNS, (_adjudication_row(v) for v in review)
     )
-    files[ANNOTATION_GUIDE_FILE] = _write_text(out_dir / ANNOTATION_GUIDE_FILE, annotation_guide(review, review_per_lang))
+    if outcome:
+        files[REVIEW_OUTCOME_FILE] = sha256_of(outcome_path)
+    files[ANNOTATION_GUIDE_FILE] = _write_text(
+        out_dir / ANNOTATION_GUIDE_FILE, annotation_guide(review, review_per_lang, outcome=outcome, applied=applied, n_variants=len(variants))
+    )
 
     report = {
         "n_seeds": len(seeds),
@@ -191,6 +324,7 @@ def export_benchmark(
         "n_near_duplicate_pairs": len(duplicates),
         "n_cross_seed_duplicate_pairs": sum(1 for d in duplicates if d.cross_seed),
         "review_rows": len(review),
+        "review_outcome": review_outcome_report(outcome, applied, review),
         "content_issues": issues,
         "counts": counts,
     }
@@ -392,12 +526,47 @@ def verify_hashes(out_dir: Path | str) -> dict[str, bool]:
     return {name: sha256_of(out_dir / name) == digest for name, digest in recorded.items()}
 
 
-def annotation_guide(review: Sequence[Variant], per_lang: int) -> str:
+def review_record(review: Sequence[Variant], outcome: Sequence[ReviewOutcome], applied: Mapping[str, str], n_variants: int) -> str:
+    """The paragraph of the annotation guide that records the review decisions taken so far."""
+    if not outcome:
+        return (
+            "The review set has not yet been reviewed, so every item carries the review status of its seed. "
+            "When the author has reviewed the items, the file review_outcome.csv records one row per item "
+            "(variant_id, lang, decision, reviewer, date) and the benchmark is rebuilt, which marks the listed "
+            "variants author-reviewed. The adjudication sheet is for a second reviewer, if one is engaged, who "
+            "reviews the same items with this guide."
+        )
+    author_rows = [r for r in outcome if r.reviewer == "author"]
+    rows = author_rows or list(outcome)
+    who = "The author" if author_rows else "A reviewer"
+    by_lang = {lang: sum(1 for r in rows if r.lang == lang) for lang in LANGS}
+    per_lang = ", ".join(f"{by_lang[lang]} {lang}" for lang in LANGS)
+    dates = sorted({r.date for r in rows})
+    when = f"on {dates[0]}" if len(dates) == 1 else f"between {dates[0]} and {dates[-1]}"
+    decisions = {d: sum(1 for r in rows if r.decision == d) for d in REVIEWER_DECISIONS}
+    in_set = sum(1 for r in rows if r.variant_id in {v.variant_id for v in review})
+    scope = "the items of this review set" if in_set == len(rows) == len(review) else f"{len(rows)} items, {in_set} of them in this review set"
+    outcome_text = ", ".join(f"{decisions[d]} {d}" for d in REVIEWER_DECISIONS)
+    verdict = " and therefore no disagreement" if decisions["disagree"] == 0 and decisions["unsure"] == 0 else ""
+    marked = Counter(applied.values())
+    marked_text = " and ".join(f"{marked[s]} variants {s}" for s in REVIEW_STATUSES if marked.get(s))
+    rest = n_variants - sum(marked.values())
+    return (
+        f"{who} reviewed {scope} ({per_lang}) against the labelling rules above {when} and recorded "
+        f"{outcome_text} decisions{verdict}. The file review_outcome.csv records the decision of every reviewed "
+        f"item (variant_id, lang, decision, reviewer, date); the export reads it and marks {marked_text}, while "
+        f"the remaining {rest} variants keep the status unreviewed. The adjudication sheet is for a second "
+        f"reviewer, if one is engaged, who reviews the same items with this guide."
+    )
+
+
+def annotation_guide(review: Sequence[Variant], per_lang: int, outcome: Sequence[ReviewOutcome] = (), applied: Mapping[str, str] | None = None, n_variants: int | None = None) -> str:
     """The annotation guide shipped with the review set."""
     n_by_lang = {lang: sum(1 for v in review if v.lang == lang) for lang in LANGS}
     families = ", ".join(FAMILIES)
     ambiguous_fields = ", ".join(AMBIGUOUS_FIELDS)
     counts = ", ".join(f"{n_by_lang[lang]} {lang}" for lang in LANGS)
+    record = review_record(review, outcome, applied or {}, len(review) if n_variants is None else n_variants)
     return f"""# Annotation guide for the Tasdiq benchmark review set
 
 ## Purpose
@@ -418,6 +587,9 @@ against.
   pairs found, and the variants excluded from the test split.
 - review_set.csv is the sample to review; adjudication_sheet.csv is the sheet used
   when a second reviewer has reviewed the same sample.
+- review_outcome.csv records the decision of every reviewed item (variant_id, lang,
+  decision, reviewer, date); the export reads it and sets the review_status of the
+  variants it names.
 - hashes.json records the SHA-256 digest of every other file in the directory.
 
 ## Fields of a variant
@@ -457,8 +629,11 @@ against.
 - source records where the text came from (authored for the base member in the
   language the turn was written in, translation for the other base members,
   paraphrase, or mutation for an edit).
-- review_status is the review state of the seed (unreviewed, author-reviewed or
-  second-reviewer).
+- review_status is the review state of the variant (unreviewed, author-reviewed or
+  second-reviewer). It is the status that the provenance of its seed gives its
+  language, raised for a variant whose label review_outcome.csv records as agreed by
+  the author (author-reviewed) or by the author and a second reviewer
+  (second-reviewer).
 - default_currency is the currency assumed when the utterance names none; payees
   lists the directory identifiers the scenario may refer to. A payee identifier is
   stable within a seed, and the same identifier may denote a different synthetic
@@ -589,18 +764,23 @@ both decisions are agree, disagree when both are disagree with the same correcte
 value, and split otherwise. For every row that is not agree, the adjudicated_intended
 column records the value adopted after discussion, in the same field=value form,
 and adjudication_notes records the reason. Items whose adjudicated value differs
-from the seed are corrected in the seed files and the benchmark is rebuilt. A seed
-reaches review_status second-reviewer only after this step; until then every table
-that uses Arabic labels reports them as single-reviewer labels.
+from the seed are corrected in the seed files and the benchmark is rebuilt. A variant
+reaches review_status second-reviewer only after this step; until then the paper
+reports the labels as reviewed by the author alone.
+
+## Review record
+
+{record}
 
 ## Review status values
 
-- unreviewed means that no one has reviewed the seed since it was authored. All
-  Arabic content starts in this state.
-- author-reviewed means that the author has reviewed the review-set items of the
-  seed and applied the corrections.
-- second-reviewer means that a second qualified reviewer has reviewed the items and
-  the adjudication has been applied.
+- unreviewed means that no one has reviewed the label of the variant since it was
+  authored. Every variant starts in this state.
+- author-reviewed means that the author has reviewed the label of the variant, as an
+  item of the review set recorded in review_outcome.csv or as a member of a seed whose
+  provenance lists its language as reviewed, and has applied any correction.
+- second-reviewer means that a second qualified reviewer has also reviewed the item
+  and the adjudication has been applied.
 """
 
 
@@ -613,6 +793,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--split-seed", type=int, default=DEFAULT_SPLIT_SEED)
     parser.add_argument("--review-per-lang", type=int, default=DEFAULT_REVIEW_PER_LANG)
     parser.add_argument("--strict-content", action="store_true", help="fail when the corpus content requirements are not met")
+    parser.add_argument("--review-outcome", default=None, help="review outcome file to apply (default: review_outcome.csv in the output directory, when present)")
     args = parser.parse_args(argv)
     seeds = load_seeds(Path(args.seeds_dir))
     result = export_benchmark(
@@ -622,6 +803,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         split_seed=args.split_seed,
         review_per_lang=args.review_per_lang,
         strict_content=args.strict_content,
+        review_outcome=args.review_outcome,
     )
     print(
         f"seeds {result.n_seeds} (main {result.n_main_seeds}), variants {result.n_variants}, "

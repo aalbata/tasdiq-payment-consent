@@ -599,6 +599,11 @@ def _unconfirmed_count(r: Mapping[str, Any], intended: bool = False) -> int:
     return sum(1 for lab in labels if isinstance(lab, Mapping) and lab.get("consent_label") == "UNCONFIRMED")
 
 
+def _claim_token(value: str) -> str:
+    """A review status or reviewer name as a claim-id token: hyphens become underscores."""
+    return str(value).replace("-", "_")
+
+
 def _rel_path(path: Path, root: Path) -> str:
     try:
         return path.resolve().relative_to(root.resolve()).as_posix()
@@ -806,13 +811,37 @@ class LedgerBuilder:
             self.count_claim(f"bench_variants_{split}", sum(1 for v in main_variants if v.get("split") == split), f"Variants assigned to the {split} split.", src_v, "split")
         self.count_claim("bench_variants_excluded", sum(1 for v in main_variants if v.get("split") == "excluded"), "Variants excluded by the near-duplicate rule.", src_v, "split")
         statuses = sorted({str(v.get("review_status")) for v in main_variants})
+        self.groups["benchmark"]["review_statuses"] = statuses
         for status in statuses:
-            self.count_claim(f"bench_review_status_{status}", sum(1 for v in main_variants if str(v.get("review_status")) == status), f"Variants whose review status is {status}.", src_v, "review_status")
+            token = _claim_token(status)
+            self.count_claim(f"bench_review_status_{token}", sum(1 for v in main_variants if str(v.get("review_status")) == status), f"Variants whose review status is {status}.", src_v, "review_status")
+            for lang in langs:
+                self.count_claim(f"bench_review_status_{token}_{lang}", sum(1 for v in main_variants if str(v.get("review_status")) == status and v.get("lang") == lang), f"Variants in language {lang} whose review status is {status}.", src_v, "review_status")
         review = data_dir / "review_set.csv"
         if review.is_file():
             with open(review, "r", encoding="utf-8-sig", newline="") as handle:
                 n_rows = sum(1 for _ in csv.DictReader(handle))
             self.count_claim("bench_review_rows", n_rows, "Rows of the author review set.", {"run": "data", "file": _rel_path(review, self.root)}, "variant_id")
+        outcome = data_dir / "review_outcome.csv"
+        if outcome.is_file():
+            with open(outcome, "r", encoding="utf-8-sig", newline="") as handle:
+                rows = list(csv.DictReader(handle))
+            src_o = {"run": "data", "file": _rel_path(outcome, self.root)}
+            reviewers = sorted({str(r.get("reviewer")) for r in rows})
+            self.groups["benchmark"]["review_outcome_reviewers"] = reviewers
+            self.count_claim("bench_review_outcome_rows", len(rows), "Rows of the review outcome file, one per reviewed variant and reviewer.", src_o, "variant_id")
+            dates = sorted({str(r.get("date")) for r in rows})
+            if len(dates) == 1:
+                self.text_claim("bench_review_outcome_date", dates[0], "Date of the recorded review decisions.", src_o, "date")
+            for reviewer in reviewers:
+                mine = [r for r in rows if str(r.get("reviewer")) == reviewer]
+                token = _claim_token(reviewer)
+                self.count_claim(f"bench_review_outcome_{token}_rows", len(mine), f"Variants on whose label the reviewer {reviewer} recorded a decision.", src_o, "reviewer")
+                for decision in ("agree", "disagree", "unsure"):
+                    self.count_claim(f"bench_review_outcome_{token}_{decision}", sum(1 for r in mine if str(r.get("decision")) == decision), f"Decisions {decision} recorded by the reviewer {reviewer}.", src_o, "decision")
+                mine_dates = sorted({str(r.get("date")) for r in mine})
+                if len(mine_dates) == 1:
+                    self.text_claim(f"bench_review_outcome_{token}_date", mine_dates[0], f"Date of the review decisions recorded by the reviewer {reviewer}.", src_o, "date")
         report = read_json(data_dir / "build_report.json")
         if isinstance(report, Mapping):
             src_r = {"run": "data", "file": _rel_path(data_dir / "build_report.json", self.root)}

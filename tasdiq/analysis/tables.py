@@ -40,6 +40,8 @@ TABLE_NAMES: tuple[str, ...] = (
 )
 
 LANG_LABELS: dict[str, str] = {"en": "English", "ar": "Arabic", "mix": "Code-switched", "all": "All"}
+LANG_WORDS: dict[str, str] = {"en": "English", "ar": "Arabic", "mix": "code-switched", "all": "all"}
+"""Language names as they read inside a sentence or a parenthetical."""
 ARM_SHORT_LABELS: dict[str, str] = {
     "B4Surface": "B4S",
     "Tasdiq_invalidate": "T-inv",
@@ -233,6 +235,13 @@ def _tabular(spec: str, header: str, rows: Sequence[str], note: str) -> str:
     return f"% {note}\n\\begin{{tabular}}{{{spec}}}\n\\toprule\n{header} \\\\\n\\midrule\n{body}\n\\bottomrule\n\\end{{tabular}}\n"
 
 
+def _review_statuses_from_claims(claims: Mapping[str, Any], langs: Sequence[str]) -> list[str]:
+    """Review statuses named by bench_review_status_<token> claims, for a manifest that lists none."""
+    prefix = "bench_review_status_"
+    tokens = sorted(c[len(prefix):] for c in claims if c.startswith(prefix) and not any(c.endswith(f"_{lang}") for lang in langs))
+    return [token.replace("_", "-") for token in tokens]
+
+
 def template_benchmark(claims: Mapping[str, Any], groups: Mapping[str, Any]) -> str:
     bench = groups.get("benchmark") or {}
     families = list(bench.get("families") or [])
@@ -251,13 +260,26 @@ def template_benchmark(claims: Mapping[str, Any], groups: Mapping[str, Any]) -> 
         cells = " & ".join(_ph(claims, f"bench_variants_{lang}_{k}") for k in kinds)
         rows.append(f"{LANG_LABELS.get(lang, lang)} & {cells}" + " & " * max(0, 3 - len(kinds)) + f" & {_ph(claims, f'bench_variants_{lang}')} \\\\")
     rows.append("\\midrule")
-    rows.append("\\multicolumn{5}{l}{\\emph{Splits and review}} \\\\")
+    reviewers = [str(r) for r in (bench.get("review_outcome_reviewers") or [])]
+    title = "Splits, review set and decisions (agree, disagree, unsure)" if reviewers else "Splits and review set"
+    rows.append(f"\\multicolumn{{5}}{{l}}{{\\emph{{{title}}}}} \\\\")
     rows.append(f"dev (seeds, variants) & {_ph(claims, 'bench_seeds_dev')} & {_ph(claims, 'bench_variants_dev')} & & \\\\")
     rows.append(f"test (seeds, variants) & {_ph(claims, 'bench_seeds_test')} & {_ph(claims, 'bench_variants_test')} & & \\\\")
     rows.append(f"excluded variants (near duplicates) & {_ph(claims, 'bench_variants_excluded')} & & & \\\\")
-    for cid in sorted(c for c in claims if c.startswith("bench_review_status_")):
-        rows.append(f"review status {escape_latex(cid[len('bench_review_status_'):])} (variants) & {_ph(claims, cid)} & & & \\\\")
-    rows.append(f"author review set (rows) & {_ph(claims, 'bench_review_rows')} & & & \\\\")
+    rows.append(f"review set (rows) & {_ph(claims, 'bench_review_rows')} & & & \\\\")
+    for reviewer in reviewers:
+        token = reviewer.replace("-", "_")
+        cells = " & ".join(_ph(claims, f"bench_review_outcome_{token}_{decision}") for decision in ("agree", "disagree", "unsure"))
+        rows.append(f"{escape_latex(reviewer)} decisions & {cells} & \\\\")
+    statuses = list(bench.get("review_statuses") or _review_statuses_from_claims(claims, langs))
+    if statuses:
+        words = ", ".join(LANG_WORDS.get(lang, lang) for lang in langs)
+        rows.append("\\midrule")
+        rows.append(f"\\multicolumn{{5}}{{l}}{{\\emph{{Review status ({words}, total)}}}} \\\\")
+        for status in statuses:
+            token = str(status).replace("-", "_")
+            cells = " & ".join(_ph(claims, f"bench_review_status_{token}_{lang}") for lang in langs)
+            rows.append(f"{escape_latex(str(status))} & {cells}" + " & " * max(0, 3 - len(langs)) + f" & {_ph(claims, f'bench_review_status_{token}')} \\\\")
     return _tabular("lrrrr", "family & seeds & variants & & ", rows, "Benchmark composition: counts are integers; n/a marks a count absent from the ledger.")
 
 
