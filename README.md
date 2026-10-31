@@ -10,10 +10,11 @@ The results were produced on a Windows 11 laptop with an Intel Core Ultra 7 155U
 
 The two trace-track runs (results/trace/full_trace and results/trace/full_trace_inattentive) produce 2.3 GB of
 per-run records (sessions.jsonl and one event file per arm) whose largest files exceed the size that this hosting
-service accepts in a repository. The repository therefore carries their manifests and aggregates only. The complete
-records are in the results package (tasdiq_results_package.zip, 74 MB, attached to the release of this repository);
-unzip its results/ folder over this repository's results/ folder before running the fast path, which rebuilds the
-ledger from those records. The capture, live and verification runs are complete in the repository.
+service accepts in a repository. The repository therefore carries their manifests and aggregates together with the
+ledger of record (results/ledger.json), from which the tables, the figures and this README were filled. The complete
+records are available from the authors on request; the fast path (python reproduce.py) needs them in place under
+results/trace/ to rebuild the ledger from the records. The capture, live and verification runs are complete in the
+repository.
 
 ## Installation
 
