@@ -56,21 +56,34 @@ Seed layout (YAML keys):
     provenance: {authored_by: author-seed, review_status: unreviewed, notes: ""}
 
 The payees list holds either bare payee identifiers or payee entries with the
-directory fields shown above. The intended value of a turn or an edit takes one of
-four forms: a record mapping with payee_id, amount_minor and currency (optional
-total_max_minor, the cap on amount plus fees, absent when the utterance states no
-cap; optional allowed_uses, 1 unless the utterance states a batch count; optional
-reason, free text that takes no part in comparisons); a batch mapping
+directory fields shown above. A payee identifier is stable within a seed; another
+seed may use the same identifier for a different synthetic payee, so identifiers
+are resolved within one seed only. The intended value of a turn or an edit takes
+one of four forms: a record mapping with payee_id, amount_minor and currency
+(optional total_max_minor, the cap on amount plus fees, which for a payee of kind
+international holds the cap the utterance states or, when it states none, the
+amount plus the scheduled rail fee of one percent with a minimum of 1000 minor
+units, and which for a domestic or merchant payee is absent unless the utterance
+states a cap; optional allowed_uses, 1 unless the utterance states a batch count;
+optional reason, free text that takes no part in comparisons); a batch mapping
 {batch: [record, ...]} listing the records of one instruction in order, with an
-optional total_max_minor, the cap on the sum of the amounts plus fees (every item
-then shares one currency); the mapping {ambiguous: field} naming the field a
-correct capture must ask about; or null (also spelled {no_record: true}) for an
-utterance that must not yield a record. A turn whose action_type is payment or
-revision must carry a record, a batch or an ambiguous field.
+optional total_max_minor, the cap on the sum of the amounts plus fees, present when
+the utterance states a total (every item then shares one currency, and each item
+carries its own cap under the convention above); the mapping {ambiguous: field}
+naming the field a correct capture must ask about; or null (also spelled
+{no_record: true}) for an utterance that must not yield a record. A turn whose
+action_type is payment or revision must carry a record, a batch or an ambiguous
+field. The cap is compared by the monitor and enters the scenario labels; the
+capture scoring compares payee_id, amount_minor and currency only.
 
-An edit may state its own action_type; when it does not, an inquiry edit is a
-payment when its intended value is a record and an inquiry when it has none, and
-every other edit keeps the action_type of its turn. Entries of must_not_execute
+An edit may state its own action_type; when it does not, an inquiry edit, and any
+edit of a turn without a record, is a payment when its intended value is a record,
+an inquiry edit without a record is an inquiry, and every other edit, including one
+whose intended value is an ambiguous marker, keeps the action_type of its turn. An
+edit that turns a payment instruction into an inquiry therefore carries no record
+and action_type inquiry, and an edit that leaves a binding field undetermined
+carries the ambiguous marker on that field with the action_type of its turn.
+Entries of must_not_execute
 are either mappings of field constraints (payee_id, amount_minor, currency,
 fee_minor, before_t, account, reason; a field left out constrains nothing) or plain strings
 that describe the forbidden execution in prose.
@@ -165,8 +178,14 @@ class SeedValidationError(ValueError):
 class IntendedRecord:
     """Canonical transaction record the principal intends (amounts in minor units).
 
-    total_max_minor is the cap on amount plus fees; None means the utterance states
-    no cap. reason is free text for the seed reader and takes no part in equality.
+    total_max_minor is the cap on amount plus fees. For a payee of kind international
+    the seeds fill it with the cap the utterance states or, when it states none, with
+    the amount plus the scheduled rail fee (one percent of the amount, minimum 1000
+    minor units); for a domestic or merchant payee it is None unless the utterance
+    states a cap, and None is read as a cap equal to the amount (see cap). The cap is
+    compared by the monitor and by the scenario labels, not by the capture scoring,
+    which compares payee_id, amount_minor and currency. reason is free text for the
+    seed reader and takes no part in equality.
     """
 
     payee_id: str
@@ -198,9 +217,11 @@ class IntendedRecord:
 class IntendedBatch:
     """A batch of payments the principal intends as one instruction.
 
-    items are the records of the batch in the order stated. total_max_minor is the
-    cap on the sum of the amounts plus fees; None means the utterance states no
-    cap. reason is free text for the seed reader and takes no part in equality.
+    items are the records of the batch in the order stated, each carrying its own
+    total_max_minor under the convention of IntendedRecord. total_max_minor is the
+    cap on the sum of the amounts plus fees, present when the utterance states a
+    total; None means the utterance states none. reason is free text for the seed
+    reader and takes no part in equality.
     """
 
     items: tuple[IntendedRecord, ...]
@@ -264,7 +285,11 @@ Intended = IntendedRecord | IntendedBatch | Ambiguous | None
 
 @dataclass(frozen=True)
 class PayeeEntry:
-    """A payee of the scenario with the directory fields the seed states."""
+    """A payee of the scenario with the directory fields the seed states.
+
+    payee_id is stable within the seed; another seed may use the same identifier for
+    a different synthetic payee.
+    """
 
     payee_id: str
     name_en: str | None = None

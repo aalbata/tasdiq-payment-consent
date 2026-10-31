@@ -12,7 +12,7 @@ The two trace-track runs (results/trace/full_trace and results/trace/full_trace_
 per-run records (sessions.jsonl and one event file per arm) whose largest files exceed the size that this hosting
 service accepts in a repository. The repository therefore carries their manifests and aggregates together with the
 ledger of record (results/ledger.json), from which the tables, the figures and this README were filled. The complete
-records are available from the authors on request; the fast path (python reproduce.py) needs them in place under
+records are available from the author on request; the fast path (python reproduce.py) needs them in place under
 results/trace/ to rebuild the ledger from the records. The capture, live and verification runs are complete in the
 repository.
 
