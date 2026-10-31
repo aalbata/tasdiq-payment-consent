@@ -1,0 +1,43 @@
+% Cost: latency per stage in seconds (three significant figures) and peak memory in gigabytes (two decimals).
+\begin{tabular}{lllrrrrr}
+\toprule
+stage & pipeline & model & calls & median (s) & p95 (s) & p99 (s) & max (s) \\
+\midrule
+monitor & trace & all & <<lat_monitor_trace_n>> & <<lat_monitor_trace_median>> & <<lat_monitor_trace_p95>> & <<lat_monitor_trace_p99>> & <<lat_monitor_trace_max>> \\
+canonicalise & direct & qwen2.5-1.5b & <<lat_canonicalise_direct_qwen25_n>> & <<lat_canonicalise_direct_qwen25_median>> & <<lat_canonicalise_direct_qwen25_p95>> & <<lat_canonicalise_direct_qwen25_p99>> & <<lat_canonicalise_direct_qwen25_max>> \\
+canonicalise & direct & qwen3-4b & <<lat_canonicalise_direct_qwen3_n>> & <<lat_canonicalise_direct_qwen3_median>> & <<lat_canonicalise_direct_qwen3_p95>> & <<lat_canonicalise_direct_qwen3_p99>> & <<lat_canonicalise_direct_qwen3_max>> \\
+canonicalise & English reference & qwen2.5-1.5b & <<lat_canonicalise_english_reference_qwen25_n>> & <<lat_canonicalise_english_reference_qwen25_median>> & <<lat_canonicalise_english_reference_qwen25_p95>> & <<lat_canonicalise_english_reference_qwen25_p99>> & <<lat_canonicalise_english_reference_qwen25_max>> \\
+canonicalise & no gate & qwen2.5-1.5b & <<lat_canonicalise_nogate_qwen25_n>> & <<lat_canonicalise_nogate_qwen25_median>> & <<lat_canonicalise_nogate_qwen25_p95>> & <<lat_canonicalise_nogate_qwen25_p99>> & <<lat_canonicalise_nogate_qwen25_max>> \\
+canonicalise & no canonicaliser & qwen2.5-1.5b & <<lat_canonicalise_noncanon_qwen25_n>> & <<lat_canonicalise_noncanon_qwen25_median>> & <<lat_canonicalise_noncanon_qwen25_p95>> & <<lat_canonicalise_noncanon_qwen25_p99>> & <<lat_canonicalise_noncanon_qwen25_max>> \\
+canonicalise & translate (same model) & qwen2.5-1.5b & <<lat_canonicalise_translate_qwen25_n>> & <<lat_canonicalise_translate_qwen25_median>> & <<lat_canonicalise_translate_qwen25_p95>> & <<lat_canonicalise_translate_qwen25_p99>> & <<lat_canonicalise_translate_qwen25_max>> \\
+canonicalise & translate (MT) & qwen2.5-1.5b & <<lat_canonicalise_translate_mt_qwen25_n>> & <<lat_canonicalise_translate_mt_qwen25_median>> & <<lat_canonicalise_translate_mt_qwen25_p95>> & <<lat_canonicalise_translate_mt_qwen25_p99>> & <<lat_canonicalise_translate_mt_qwen25_max>> \\
+canonicalise & translate (MT) & qwen3-4b & <<lat_canonicalise_translate_mt_qwen3_n>> & <<lat_canonicalise_translate_mt_qwen3_median>> & <<lat_canonicalise_translate_mt_qwen3_p95>> & <<lat_canonicalise_translate_mt_qwen3_p99>> & <<lat_canonicalise_translate_mt_qwen3_max>> \\
+gate & direct & qwen2.5-1.5b & <<lat_gate_direct_qwen25_n>> & <<lat_gate_direct_qwen25_median>> & <<lat_gate_direct_qwen25_p95>> & <<lat_gate_direct_qwen25_p99>> & <<lat_gate_direct_qwen25_max>> \\
+gate & direct & qwen3-4b & <<lat_gate_direct_qwen3_n>> & <<lat_gate_direct_qwen3_median>> & <<lat_gate_direct_qwen3_p95>> & <<lat_gate_direct_qwen3_p99>> & <<lat_gate_direct_qwen3_max>> \\
+gate & English reference & qwen2.5-1.5b & <<lat_gate_english_reference_qwen25_n>> & <<lat_gate_english_reference_qwen25_median>> & <<lat_gate_english_reference_qwen25_p95>> & <<lat_gate_english_reference_qwen25_p99>> & <<lat_gate_english_reference_qwen25_max>> \\
+gate & no gate & qwen2.5-1.5b & <<lat_gate_nogate_qwen25_n>> & <<lat_gate_nogate_qwen25_median>> & <<lat_gate_nogate_qwen25_p95>> & <<lat_gate_nogate_qwen25_p99>> & <<lat_gate_nogate_qwen25_max>> \\
+gate & no canonicaliser & qwen2.5-1.5b & <<lat_gate_noncanon_qwen25_n>> & <<lat_gate_noncanon_qwen25_median>> & <<lat_gate_noncanon_qwen25_p95>> & <<lat_gate_noncanon_qwen25_p99>> & <<lat_gate_noncanon_qwen25_max>> \\
+gate & translate (same model) & qwen2.5-1.5b & <<lat_gate_translate_qwen25_n>> & <<lat_gate_translate_qwen25_median>> & <<lat_gate_translate_qwen25_p95>> & <<lat_gate_translate_qwen25_p99>> & <<lat_gate_translate_qwen25_max>> \\
+gate & translate (MT) & qwen2.5-1.5b & <<lat_gate_translate_mt_qwen25_n>> & <<lat_gate_translate_mt_qwen25_median>> & <<lat_gate_translate_mt_qwen25_p95>> & <<lat_gate_translate_mt_qwen25_p99>> & <<lat_gate_translate_mt_qwen25_max>> \\
+gate & translate (MT) & qwen3-4b & <<lat_gate_translate_mt_qwen3_n>> & <<lat_gate_translate_mt_qwen3_median>> & <<lat_gate_translate_mt_qwen3_p95>> & <<lat_gate_translate_mt_qwen3_p99>> & <<lat_gate_translate_mt_qwen3_max>> \\
+model & direct & qwen2.5-1.5b & <<lat_model_direct_qwen25_n>> & <<lat_model_direct_qwen25_median>> & <<lat_model_direct_qwen25_p95>> & <<lat_model_direct_qwen25_p99>> & <<lat_model_direct_qwen25_max>> \\
+model & direct & qwen3-4b & <<lat_model_direct_qwen3_n>> & <<lat_model_direct_qwen3_median>> & <<lat_model_direct_qwen3_p95>> & <<lat_model_direct_qwen3_p99>> & <<lat_model_direct_qwen3_max>> \\
+model & English reference & qwen2.5-1.5b & <<lat_model_english_reference_qwen25_n>> & <<lat_model_english_reference_qwen25_median>> & <<lat_model_english_reference_qwen25_p95>> & <<lat_model_english_reference_qwen25_p99>> & <<lat_model_english_reference_qwen25_max>> \\
+model & no gate & qwen2.5-1.5b & <<lat_model_nogate_qwen25_n>> & <<lat_model_nogate_qwen25_median>> & <<lat_model_nogate_qwen25_p95>> & <<lat_model_nogate_qwen25_p99>> & <<lat_model_nogate_qwen25_max>> \\
+model & no canonicaliser & qwen2.5-1.5b & <<lat_model_noncanon_qwen25_n>> & <<lat_model_noncanon_qwen25_median>> & <<lat_model_noncanon_qwen25_p95>> & <<lat_model_noncanon_qwen25_p99>> & <<lat_model_noncanon_qwen25_max>> \\
+model & translate (same model) & qwen2.5-1.5b & <<lat_model_translate_qwen25_n>> & <<lat_model_translate_qwen25_median>> & <<lat_model_translate_qwen25_p95>> & <<lat_model_translate_qwen25_p99>> & <<lat_model_translate_qwen25_max>> \\
+model & translate (MT) & qwen2.5-1.5b & <<lat_model_translate_mt_qwen25_n>> & <<lat_model_translate_mt_qwen25_median>> & <<lat_model_translate_mt_qwen25_p95>> & <<lat_model_translate_mt_qwen25_p99>> & <<lat_model_translate_mt_qwen25_max>> \\
+model & translate (MT) & qwen3-4b & <<lat_model_translate_mt_qwen3_n>> & <<lat_model_translate_mt_qwen3_median>> & <<lat_model_translate_mt_qwen3_p95>> & <<lat_model_translate_mt_qwen3_p99>> & <<lat_model_translate_mt_qwen3_max>> \\
+translate & translate (same model) & qwen2.5-1.5b & <<lat_translate_translate_qwen25_n>> & <<lat_translate_translate_qwen25_median>> & <<lat_translate_translate_qwen25_p95>> & <<lat_translate_translate_qwen25_p99>> & <<lat_translate_translate_qwen25_max>> \\
+translate & translate (MT) & qwen2.5-1.5b & <<lat_translate_translate_mt_qwen25_n>> & <<lat_translate_translate_mt_qwen25_median>> & <<lat_translate_translate_mt_qwen25_p95>> & <<lat_translate_translate_mt_qwen25_p99>> & <<lat_translate_translate_mt_qwen25_max>> \\
+translate & translate (MT) & qwen3-4b & <<lat_translate_translate_mt_qwen3_n>> & <<lat_translate_translate_mt_qwen3_median>> & <<lat_translate_translate_mt_qwen3_p95>> & <<lat_translate_translate_mt_qwen3_p99>> & <<lat_translate_translate_mt_qwen3_max>> \\
+model & live & qwen2.5-1.5b & <<lat_model_live_qwen25_n>> & <<lat_model_live_qwen25_median>> & <<lat_model_live_qwen25_p95>> & <<lat_model_live_qwen25_p99>> & <<lat_model_live_qwen25_max>> \\
+model & live & qwen3-4b & <<lat_model_live_qwen3_n>> & <<lat_model_live_qwen3_median>> & <<lat_model_live_qwen3_p95>> & <<lat_model_live_qwen3_p99>> & <<lat_model_live_qwen3_max>> \\
+monitor & live & all & <<lat_monitor_live_n>> & <<lat_monitor_live_median>> & <<lat_monitor_live_p95>> & <<lat_monitor_live_p99>> & <<lat_monitor_live_max>> \\
+\midrule
+\multicolumn{8}{l}{\emph{Peak resident set size (GB)}} \\
+trace & & & & <<mem_peak_rss_bytes_trace>> & & & \\
+capture & & & & <<mem_peak_rss_bytes_capture>> & & & \\
+live & & & & <<mem_peak_rss_bytes_live>> & & & \\
+\bottomrule
+\end{tabular}

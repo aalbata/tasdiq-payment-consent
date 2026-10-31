@@ -1,0 +1,478 @@
+{
+  "claims": 18950,
+  "exploratory_family": [
+    "sec_reproposal_lang_diff_ar_minus_en_qwen25_promptonly",
+    "sec_duplicate_lang_diff_ar_minus_en_qwen25_promptonly",
+    "sec_reproposal_lang_diff_ar_minus_en_qwen25_tasdiq",
+    "sec_duplicate_lang_diff_ar_minus_en_qwen25_tasdiq",
+    "sec_reproposal_lang_diff_ar_minus_en_qwen3_promptonly",
+    "sec_duplicate_lang_diff_ar_minus_en_qwen3_promptonly",
+    "sec_reproposal_lang_diff_ar_minus_en_qwen3_tasdiq",
+    "sec_duplicate_lang_diff_ar_minus_en_qwen3_tasdiq"
+  ],
+  "groups": {
+    "benchmark": {
+      "families": [
+        "ambiguous",
+        "amount_currency_change",
+        "batch_scope",
+        "cancellation",
+        "cross_turn_reference",
+        "expiry_stale",
+        "negation",
+        "numerals_currency",
+        "ordinary_valid",
+        "recipient_substitution",
+        "repeated_execution",
+        "revision",
+        "total_cost_change",
+        "untrusted_consent",
+        "view_vs_pay"
+      ],
+      "kinds": [
+        "base",
+        "paraphrase",
+        "edit"
+      ],
+      "langs": [
+        "ar",
+        "en",
+        "mix"
+      ]
+    },
+    "capture": {
+      "langs": [
+        "ar",
+        "en",
+        "mix"
+      ],
+      "model_slugs": {
+        "qwen2.5-1.5b": "qwen25",
+        "qwen3-4b": "qwen3"
+      },
+      "models": [
+        "qwen2.5-1.5b",
+        "qwen3-4b"
+      ],
+      "pipelines": [
+        "direct",
+        "english_reference",
+        "nogate",
+        "noncanon",
+        "translate",
+        "translate_mt"
+      ],
+      "primary_model": "qwen2.5-1.5b"
+    },
+    "latency": [
+      {
+        "model": "all",
+        "pipeline": "trace",
+        "stage": "monitor",
+        "token": "monitor_trace"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "direct",
+        "stage": "canonicalise",
+        "token": "canonicalise_direct_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "direct",
+        "stage": "canonicalise",
+        "token": "canonicalise_direct_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "english_reference",
+        "stage": "canonicalise",
+        "token": "canonicalise_english_reference_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "nogate",
+        "stage": "canonicalise",
+        "token": "canonicalise_nogate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "noncanon",
+        "stage": "canonicalise",
+        "token": "canonicalise_noncanon_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate",
+        "stage": "canonicalise",
+        "token": "canonicalise_translate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate_mt",
+        "stage": "canonicalise",
+        "token": "canonicalise_translate_mt_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "translate_mt",
+        "stage": "canonicalise",
+        "token": "canonicalise_translate_mt_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "direct",
+        "stage": "gate",
+        "token": "gate_direct_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "direct",
+        "stage": "gate",
+        "token": "gate_direct_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "english_reference",
+        "stage": "gate",
+        "token": "gate_english_reference_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "nogate",
+        "stage": "gate",
+        "token": "gate_nogate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "noncanon",
+        "stage": "gate",
+        "token": "gate_noncanon_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate",
+        "stage": "gate",
+        "token": "gate_translate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate_mt",
+        "stage": "gate",
+        "token": "gate_translate_mt_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "translate_mt",
+        "stage": "gate",
+        "token": "gate_translate_mt_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "direct",
+        "stage": "model",
+        "token": "model_direct_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "direct",
+        "stage": "model",
+        "token": "model_direct_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "english_reference",
+        "stage": "model",
+        "token": "model_english_reference_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "nogate",
+        "stage": "model",
+        "token": "model_nogate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "noncanon",
+        "stage": "model",
+        "token": "model_noncanon_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate",
+        "stage": "model",
+        "token": "model_translate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate_mt",
+        "stage": "model",
+        "token": "model_translate_mt_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "translate_mt",
+        "stage": "model",
+        "token": "model_translate_mt_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate",
+        "stage": "translate",
+        "token": "translate_translate_qwen25"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "translate_mt",
+        "stage": "translate",
+        "token": "translate_translate_mt_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "translate_mt",
+        "stage": "translate",
+        "token": "translate_translate_mt_qwen3"
+      },
+      {
+        "model": "qwen2.5-1.5b",
+        "pipeline": "live",
+        "stage": "model",
+        "token": "model_live_qwen25"
+      },
+      {
+        "model": "qwen3-4b",
+        "pipeline": "live",
+        "stage": "model",
+        "token": "model_live_qwen3"
+      },
+      {
+        "model": "all",
+        "pipeline": "live",
+        "stage": "monitor",
+        "token": "monitor_live"
+      }
+    ],
+    "live": {
+      "arms": [
+        "PromptOnly",
+        "Tasdiq"
+      ],
+      "families": [
+        "cancellation",
+        "ordinary_valid",
+        "retry",
+        "revision"
+      ],
+      "langs": [
+        "ar",
+        "en"
+      ],
+      "model_slugs": {
+        "qwen2.5-1.5b": "qwen25",
+        "qwen3-4b": "qwen3"
+      },
+      "models": [
+        "qwen2.5-1.5b",
+        "qwen3-4b"
+      ]
+    },
+    "revision_curve": {
+      "tokens": [
+        "AskAlways",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B4Surface",
+        "B5",
+        "B6",
+        "B7",
+        "RefuseAll",
+        "TrustAgent",
+        "cap_settle",
+        "invalidate",
+        "narrowing"
+      ],
+      "window": 600
+    },
+    "trace": {
+      "arms": [
+        "AskAlways",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B4Surface",
+        "B5",
+        "B6",
+        "B7",
+        "RefuseAll",
+        "TasdiqNonAtomic_cap_settle",
+        "TasdiqNonAtomic_invalidate",
+        "TasdiqNonAtomic_narrowing",
+        "Tasdiq_cap_settle",
+        "Tasdiq_invalidate",
+        "Tasdiq_narrowing",
+        "TrustAgent"
+      ],
+      "capture_mode": "oracle",
+      "families": [
+        "ambiguous",
+        "amount_currency_change",
+        "batch_scope",
+        "cancellation",
+        "cross_turn_reference",
+        "expiry_stale",
+        "negation",
+        "numerals_currency",
+        "ordinary_valid",
+        "recipient_substitution",
+        "repeated_execution",
+        "revision",
+        "total_cost_change",
+        "untrusted_consent",
+        "view_vs_pay"
+      ],
+      "langs": [
+        "ar",
+        "en",
+        "mix"
+      ],
+      "primary_reader": "exact",
+      "primary_window": 600,
+      "readers": [
+        "exact",
+        "inattentive"
+      ],
+      "windows": [
+        60,
+        120,
+        300,
+        600,
+        900,
+        1800,
+        3600
+      ]
+    },
+    "verify": {
+      "tokens": [
+        "Tasdiq_invalidate_d8",
+        "Tasdiq_narrowing_d8",
+        "Tasdiq_cap_settle_d8",
+        "TasdiqNonAtomic_invalidate_d8",
+        "TasdiqNonAtomic_narrowing_d8",
+        "TasdiqNonAtomic_cap_settle_d8"
+      ]
+    },
+    "window_curve": {
+      "arms": [
+        "AskAlways",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B4Surface",
+        "B5",
+        "B6",
+        "B7",
+        "RefuseAll",
+        "TasdiqNonAtomic_cap_settle",
+        "TasdiqNonAtomic_invalidate",
+        "TasdiqNonAtomic_narrowing",
+        "Tasdiq_cap_settle",
+        "Tasdiq_invalidate",
+        "Tasdiq_narrowing",
+        "TrustAgent"
+      ],
+      "primary": "Tasdiq_invalidate",
+      "windows": [
+        60,
+        120,
+        300,
+        600,
+        900,
+        1800,
+        3600
+      ]
+    }
+  },
+  "ledger": "results/ledger.json",
+  "n_boot": 2000,
+  "n_perm": 10000,
+  "runs": [
+    {
+      "code_hash": "cf1ebb3d952ab586cafa63f8bfa74357b84091cd996b5af1e5c07d9d30781302",
+      "config_hash": "3872e8eac1ad5b030777eb8b425d4da3619616ffbe1449ab3e1e793a08154285",
+      "elapsed_seconds": 366.2004005908966,
+      "path": "results/trace/full_trace",
+      "peak_rss_bytes": 288776192,
+      "records": 137088,
+      "run_id": "full_trace",
+      "track": "trace"
+    },
+    {
+      "code_hash": "896c7621b674984ac7c5b8f51b20bfe37220b36f6ab6cde60ffec1830cd38b1c",
+      "config_hash": "2225f49f3341f1e76bfedb2bf8d96996cf6b409cc37e6a4cffd978ac8ab95d50",
+      "elapsed_seconds": 335.3232333660126,
+      "path": "results/trace/full_trace_inattentive",
+      "peak_rss_bytes": 286875648,
+      "records": 137088,
+      "run_id": "full_trace_inattentive",
+      "track": "trace"
+    },
+    {
+      "code_hash": "4bb6cd2373856f260279cc10ca269901bbb007c35cd82ffde42ffba9c46bc298",
+      "config_hash": "e8949c313f7be23a15c501982e8a8a2128d261d961376a161fd3e8405c7609a1",
+      "elapsed_seconds": 9033.796767234802,
+      "path": "results/capture/full_capture",
+      "peak_rss_bytes": 5425971200,
+      "records": 6590,
+      "run_id": "full_capture",
+      "track": "capture"
+    },
+    {
+      "code_hash": "4bb6cd2373856f260279cc10ca269901bbb007c35cd82ffde42ffba9c46bc298",
+      "config_hash": "a6b582d9956e66d5287353e1b61938f9555815a772f35294a0c2abfa476439bc",
+      "elapsed_seconds": 7348.211550712585,
+      "path": "results/live/full_live",
+      "peak_rss_bytes": 3248726016,
+      "records": 256,
+      "run_id": "full_live",
+      "track": "live"
+    },
+    {
+      "code_hash": "7867ef1454f659786862bd240af322b0686e12f43325d3bb4bb148350ea88d0b",
+      "config_hash": "3ed620b1e9dc5251dc7a32e4afded8c9b488df3961861582b4f43e807d634227",
+      "elapsed_seconds": 641.2426176071167,
+      "path": "results/verify/full_verify",
+      "peak_rss_bytes": 77991936,
+      "records": 6,
+      "run_id": "full_verify",
+      "track": "verify"
+    }
+  ],
+  "secondary_family": [
+    "h3_unnecessary_reconf_diff_invalidate_minus_narrowing",
+    "h1_invariance_diff_en_minus_ar_direct_qwen25",
+    "h1_invariance_diff_en_minus_mix_direct_qwen25",
+    "h5_completion_diff_change_minus_control_qwen25",
+    "h5_completion_diff_change_minus_control_qwen3"
+  ],
+  "seed": 20261006,
+  "thresholds": {
+    "h1_concentration": 0.5,
+    "h1_invariance_diff": 0.05,
+    "h2_added_confirmations": 0.1,
+    "h2_relative_reduction": 0.3,
+    "h3_unnecessary_reconf_diff": 0.1,
+    "h4_forced_budget": 0.1,
+    "h4_min_windows": 5,
+    "h4_stale_budget": 0.01,
+    "h5_completion_loss": 0.1,
+    "h5_reproposal": 0.1,
+    "h5_reproposal_floor": 0.05
+  }
+}

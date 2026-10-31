@@ -1,0 +1,23 @@
+% Baseline ladder and calibration: the window column is the value each arm enforces in seconds (none for an arm without a window).
+\begin{tabular}{l>{\raggedright\arraybackslash}p{1.0in}>{\raggedright\arraybackslash}p{0.95in}c>{\raggedright\arraybackslash}p{0.8in}>{\raggedright\arraybackslash}p{0.75in}>{\raggedright\arraybackslash}p{0.65in}>{\raggedright\arraybackslash}p{0.85in}}
+\toprule
+arm & binding & revision rule & window (s) & revocation & replay & key provenance & source \\
+\midrule
+B0 & none & none & <<cal_window_s_B0>> & none & none & none & no-monitor control \\
+B1 & schema check only & none & <<cal_window_s_B1>> & none & none & none & schema-only control \\
+B2 & allowlist and caps & none & <<cal_window_s_B2>> & none & key presence & client & static restrictions \\
+B3 & effect class per interaction & none (interaction elevated) & <<cal_window_s_B3>> & none & none & none & time-boxed elevation form \\
+B4 & record hash (payee, amount, currency) & invalidate on change & <<cal_window_s_B4>> & not applied (no channel) & idempotency ledger & client (agent) & transaction-bound form \\
+B4Surface & rendered confirmation text & invalidate on change & <<cal_window_s_B4Surface>> & not applied (no channel) & idempotency ledger & client (agent) & surface-bound variant of B4 \\
+B5 & record hash and confirmation event & new confirmation & <<cal_window_s_B5>> & issued slots revoked & slot key replay & server (record and slot) & lease ledger form \\
+B6 & tool and argument fingerprint & none & <<cal_window_s_B6>> & none & none & none & per-call approval form \\
+B7 & policy set (payees, amount cap) & narrowing applied, expansion asks & <<cal_window_s_B7>> & policy narrowed to empty & none & none & policy narrowing form \\
+Tasdiq & record hash and consent channel & invalidate, narrowing or cap and settle & <<cal_window_s_Tasdiq>> & record revoked on cancellation & ledger keyed by record and slot & server (record and slot) & this work \\
+TasdiqNonAtomic & as Tasdiq, check and consume separated & as Tasdiq & <<cal_window_s_TasdiqNonAtomic>> & as Tasdiq & as Tasdiq & server (record and slot) & ablation of this work \\
+TrustAgent & agent claim of confirmation & as B4 otherwise & <<cal_window_s_TrustAgent>> & not applied & idempotency ledger & client (agent) & trust-the-agent control \\
+AskAlways & fresh presentation per execution & as B4 & <<cal_window_s_AskAlways>> & not applied & idempotency ledger & client (agent) & ask-always control \\
+RefuseAll & none (every request denied) & none & <<cal_window_s_RefuseAll>> & none & none & none & refuse-all control \\
+\midrule
+\multicolumn{8}{l}{windows swept (s): <<cal_windows_swept>>; the window column gives the default window of an arm whose window is swept} \\
+\bottomrule
+\end{tabular}

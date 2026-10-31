@@ -1,0 +1,99 @@
+# Full configuration: the test split (74 seeds) through all arms, seven windows and all revision
+# rules on the trace track; the capture pipelines on the 1.5B model with the stratified seed subsets
+# of the protocol; the 4B model (thinking disabled) on direct and translate_mt over a stratified
+# subset of 25 test seeds; the live track on the 16 test tasks in two languages and two arms, with
+# three sampling seeds at temperature 0.3 for the 1.5B model and seed 1 at temperature 0 for the 4B
+# model; the bounded exploration at depth 8. The trace track is run a second time under the
+# inattentive reader (trace_sensitivity_runs) as the sensitivity run of the reader model; the
+# ledger reads both trace runs and keeps the inattentive claims under their own token.
+# Paths are relative to the code root. Model files are resolved at run time from the Hugging Face
+# cache (huggingface_hub.try_to_load_from_cache on repo and file) or from models_dir when set.
+run_id: full
+results_dir: results
+data_dir: data
+seeds_dir: tasdiq/bench/seeds
+live_tasks_file: tasdiq/bench/seeds/live_tasks.yaml
+
+seed_ids: all
+languages: [en, ar, mix]
+splits: [test]
+trace_kinds: [base, paraphrase, edit]
+
+arms: [B0, B1, B2, B3, B4, B4Surface, B5, B6, B7, Tasdiq, TasdiqNonAtomic, TrustAgent, AskAlways, RefuseAll]
+windows: [60, 120, 300, 600, 900, 1800, 3600]
+revision_rules: [invalidate, narrowing, cap_settle]
+user_model: exact
+capture_mode: oracle
+
+capture_splits: [test]
+capture_pipelines: [direct, noncanon, nogate, translate, translate_mt, english_reference]
+capture_kinds: [base, paraphrase, edit]
+capture_pipeline_members:
+  translate: {languages: [ar, mix]}
+  translate_mt: {languages: [ar, mix]}
+  english_reference: {languages: [ar, mix], kinds: [base]}
+capture_seed_subsets: {noncanon: 0.3333, translate: 0.3333}
+capture_subset_seed: 20261006
+capture_seed: 1
+capture_temperature: 0.0
+capture_max_tokens: 256
+
+models:
+  - name: qwen2.5-1.5b
+    file: qwen2.5-1.5b-instruct-q4_k_m.gguf
+    repo: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+    sha256: 6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e
+    tracks: [capture, live]
+    n_ctx: 6144
+  - name: qwen3-4b
+    file: Qwen3-4B-Q4_K_M.gguf
+    repo: Qwen/Qwen3-4B-GGUF
+    sha256: 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5
+    tracks: [capture, live]
+    n_ctx: 4096
+    subset:
+      capture_pipelines: [direct, translate_mt]
+      capture_seed_count: 25
+      live_splits: [test]
+      live_seeds: [1]
+      live_temperature: 0.0
+models_dir: null
+manifest_path: null
+mt_model: Helsinki-NLP/opus-mt-ar-en
+mt_local_files_only: true
+
+live_tasks: all
+live_splits: [test]
+live_arms: [PromptOnly, Tasdiq]
+live_langs: [en, ar]
+live_seeds: [1, 2, 3]
+live_temperature: 0.3
+live_max_steps: 10
+live_step_seconds: 5
+live_consent_channel: oracle
+live_dev_tasks: [live_rev_001, live_can_001, live_ord_001, live_ret_001]
+
+verify_arms: [Tasdiq, TasdiqNonAtomic]
+explore_depth: 8
+
+max_workers: 4
+n_threads: 3
+per_worker_gb: 1.2
+principal_id: U-1
+dev_fraction: 0.25
+split_seed: 20261006
+arm_params:
+  B2:
+    per_tx_cap_minor: 100000
+    daily_cap_minor: 300000
+    allowlist: scenario_payees
+  B7:
+    initial_policy: first_intended_payee_with_amount_cap
+fee_policy: {}
+trace_sensitivity_runs:
+  full_trace_inattentive: {user_model: inattentive}
+ledger_runs:
+  trace: [full_trace, full_trace_inattentive]
+  capture: [full_capture]
+  live: [full_live]
+  verify: [full_verify]

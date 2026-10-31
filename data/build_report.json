@@ -1,0 +1,59 @@
+{
+  "content_issues": [
+    "main set has 102 seeds; required 60 to 80"
+  ],
+  "counts": {
+    "near_duplicate_pairs_by_split": {
+      "cross_split": 8,
+      "cross_split_cross_seed": 8,
+      "within_dev": 13,
+      "within_dev_cross_seed": 1,
+      "within_test": 41,
+      "within_test_cross_seed": 7
+    },
+    "seeds_by_split": {
+      "dev": 28,
+      "test": 74
+    },
+    "variants_by_family": {
+      "ambiguous": 303,
+      "amount_currency_change": 129,
+      "batch_scope": 102,
+      "cancellation": 204,
+      "cross_turn_reference": 186,
+      "expiry_stale": 135,
+      "negation": 153,
+      "numerals_currency": 141,
+      "ordinary_valid": 189,
+      "recipient_substitution": 99,
+      "repeated_execution": 120,
+      "revision": 348,
+      "total_cost_change": 102,
+      "untrusted_consent": 132,
+      "view_vs_pay": 114
+    },
+    "variants_by_kind": {
+      "base": 459,
+      "edit": 1080,
+      "paraphrase": 918
+    },
+    "variants_by_lang": {
+      "ar": 819,
+      "en": 819,
+      "mix": 819
+    },
+    "variants_by_split": {
+      "dev": 693,
+      "excluded": 8,
+      "test": 1756
+    }
+  },
+  "n_cross_seed_duplicate_pairs": 16,
+  "n_dialect_extra_seeds": 0,
+  "n_excluded_variants": 8,
+  "n_main_seeds": 102,
+  "n_near_duplicate_pairs": 62,
+  "n_seeds": 102,
+  "n_variants": 2457,
+  "review_rows": 120
+}

@@ -1,0 +1,72 @@
+# Pilot configuration: fifteen seeds across the families, all languages, all arms, three windows,
+# all revision rules, five capture pipelines, one model, eight live tasks in two languages and two arms.
+# ledger_runs names the run directories the ledger reads (one per track).
+# Paths are relative to the code root. Model files are resolved at run time from the Hugging Face
+# cache (huggingface_hub.try_to_load_from_cache on repo and file) or from models_dir when set.
+run_id: pilot
+results_dir: results
+data_dir: data
+seeds_dir: tasdiq/bench/seeds
+live_tasks_file: tasdiq/bench/seeds/live_tasks.yaml
+
+seed_ids: [ord_001, amb_001, view_001, rev_001, can_001, exp_001, sub_001, amt_001, tot_001, rep_001, bat_001, unt_001, neg_001, num_001, ref_001]
+languages: [en, ar, mix]
+splits: [dev, test]
+trace_kinds: [base, paraphrase, edit]
+
+arms: [B0, B1, B2, B3, B4, B4Surface, B5, B6, B7, Tasdiq, TasdiqNonAtomic, TrustAgent, AskAlways, RefuseAll]
+windows: [60, 600, 3600]
+revision_rules: [invalidate, narrowing, cap_settle]
+user_model: exact
+capture_mode: oracle
+
+capture_pipelines: [direct, noncanon, nogate, translate, translate_mt]
+capture_kinds: [base, paraphrase, edit]
+capture_seed: 1
+capture_temperature: 0.0
+capture_max_tokens: 256
+
+models:
+  - name: qwen2.5-1.5b
+    file: qwen2.5-1.5b-instruct-q4_k_m.gguf
+    repo: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+    sha256: 6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e
+    tracks: [capture, live]
+    n_ctx: 6144
+models_dir: null
+manifest_path: null
+mt_model: Helsinki-NLP/opus-mt-ar-en
+mt_local_files_only: true
+
+live_tasks: [live_rev_001, live_rev_003, live_rev_005, live_rev_007, live_can_001, live_can_003, live_ord_001, live_ret_001]
+live_arms: [PromptOnly, Tasdiq]
+live_langs: [en, ar]
+live_seeds: [1]
+live_temperature: 0.0
+live_max_steps: 10
+live_step_seconds: 5
+live_consent_channel: oracle
+live_dev_tasks: [live_rev_001, live_can_001, live_ord_001, live_ret_001]
+
+verify_arms: [Tasdiq, TasdiqNonAtomic]
+explore_depth: 8
+
+max_workers: 4
+n_threads: 3
+per_worker_gb: 1.2
+principal_id: U-1
+dev_fraction: 0.25
+split_seed: 20261006
+arm_params:
+  B2:
+    per_tx_cap_minor: 100000
+    daily_cap_minor: 300000
+    allowlist: scenario_payees
+  B7:
+    initial_policy: first_intended_payee_with_amount_cap
+fee_policy: {}
+ledger_runs:
+  trace: [pilot_trace]
+  capture: [pilot_capture]
+  live: [pilot_live]
+  verify: [pilot_verify]

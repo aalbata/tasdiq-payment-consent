@@ -1,0 +1,706 @@
+provenance:
+  authored_by: author-seed
+  review_status: unreviewed
+  notes: "Live-track tasks for the scripted user simulator. English and Arabic utterance pairs only; the Arabic content awaits the author's review."
+tasks:
+  - task_id: live_rev_001
+    family: revision
+    revision_kind: lower_amount
+    payees:
+      - payee_id: P-114
+        name_en: "Omar Khalid"
+        name_ar: "عمر خالد"
+        aliases: ["Omar", "Omar K", "3omar", "عمر"]
+        kind: domestic
+        iban_masked: "AE** **** 4471"
+      - payee_id: P-222
+        name_en: "Khalid Omar"
+        name_ar: "خالد عمر"
+        aliases: ["Khalid", "Khaled", "خالد"]
+        kind: domestic
+        iban_masked: "AE** **** 6350"
+    default_currency: AED
+    initial_request:
+      en: "Please send 600 dirhams to Omar Khalid."
+      ar: "من فضلك أرسل ٦٠٠ درهم إلى عمر خالد."
+    followup:
+      kind: revise
+      trigger: after_confirmation
+      text:
+        en: "Actually, make it 450 instead of 600."
+        ar: "في الواقع، اجعله أربعمئة وخمسين درهماً بدلاً من ستمئة."
+    clarification_answer:
+      en: "Yes, Omar Khalid, the account ending 4471, in dirhams, from my main account. Use the latest amount I stated."
+      ar: "نعم، عمر خالد، الحساب المنتهي بـ ٤٤٧١، بالدرهم، من حسابي الرئيسي. استخدم آخر مبلغ ذكرته."
+    intended_initial: {payee_id: P-114, amount_minor: 60000, currency: AED}
+    intended_final: {payee_id: P-114, amount_minor: 45000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-114, amount_minor: 60000, currency: AED, reason: "superseded by the revision to 450.00 AED stated after the first confirmation"}
+      - {payee_id: P-114, amount_minor: 45000, currency: AED, reason: "a second debit of the revised payment after the lost acknowledgement; the retry must reuse the first idempotency key"}
+    lost_ack_on_first_send: true
+    notes: "Downward revision immediately after the first confirmation outcome. The correct episode requests a new confirmation for 450.00 AED, sends once, and on the lost acknowledgement retries with the same idempotency key. Khalid Omar is listed as a name-order distractor."
+
+  - task_id: live_rev_002
+    family: revision
+    revision_kind: lower_amount
+    payees:
+      - payee_id: P-203
+        name_en: "Al Kuthban Academy"
+        name_ar: "أكاديمية الكثبان"
+        aliases: ["the school", "school fees", "Kuthban", "المدرسة", "رسوم المدرسة", "الكثبان"]
+        kind: merchant
+        iban_masked: "AE** **** 5520"
+      - payee_id: P-161
+        name_en: "Crescent Academy Transport"
+        name_ar: "نقل أكاديمية الهلال"
+        aliases: ["Crescent Transport", "school bus", "نقل الهلال", "حافلة المدرسة"]
+        kind: merchant
+    default_currency: AED
+    initial_request:
+      en: "Pay the school fees to Al Kuthban Academy, one thousand two hundred dirhams."
+      ar: "ادفع رسوم المدرسة لأكاديمية الكثبان، ألفاً ومئتي درهم."
+    followup:
+      kind: revise
+      trigger: "after_steps:2"
+      text:
+        en: "Wait, the fees are 1,000 dirhams, not 1,200. Pay 1,000."
+        ar: "انتظر، الرسوم ١٠٠٠ درهم وليس ١٢٠٠. ادفع ألف درهم."
+    clarification_answer:
+      en: "Al Kuthban Academy, the school, in dirhams. Use the most recent amount I gave you."
+      ar: "أكاديمية الكثبان، المدرسة، بالدرهم. استخدم أحدث مبلغ أعطيتك إياه."
+    intended_initial: {payee_id: P-203, amount_minor: 120000, currency: AED}
+    intended_final: {payee_id: P-203, amount_minor: 100000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-203, amount_minor: 120000, currency: AED, reason: "superseded by the revision to 1,000.00 AED stated after the second agent step"}
+    lost_ack_on_first_send: false
+    notes: "Downward revision arriving after two agent steps, while the agent may still be preparing the first record. The English initial request uses number words; the Arabic follow-up uses Eastern digits and number words. Reference labels are computed from the time of each execution relative to the revision."
+
+  - task_id: live_rev_003
+    family: revision
+    revision_kind: higher_amount
+    payees:
+      - payee_id: P-121
+        name_en: "Layla Haddad"
+        name_ar: "ليلى حداد"
+        aliases: ["Layla", "Laila", "ليلى"]
+        kind: domestic
+      - payee_id: P-120
+        name_en: "Layla Hassan"
+        name_ar: "ليلى حسن"
+        aliases: ["Layla", "Laila", "ليلى", "Layla Hassan"]
+        kind: domestic
+        iban_masked: "AE** **** 9028"
+    default_currency: AED
+    initial_request:
+      en: "Transfer 300 AED to Layla Haddad."
+      ar: "حوّل ثلاثمئة درهم إلى ليلى حداد."
+    followup:
+      kind: revise
+      trigger: after_confirmation
+      text:
+        en: "Change it to five hundred dirhams, she needs more than that."
+        ar: "غيّره إلى ٥٠٠ درهم، فهي تحتاج إلى أكثر من ذلك."
+    clarification_answer:
+      en: "Layla Haddad, not Layla Hassan, in dirhams. The amount is the one I stated last."
+      ar: "ليلى حداد، وليس ليلى حسن، بالدرهم. المبلغ هو الذي ذكرته آخر مرة."
+    intended_initial: {payee_id: P-121, amount_minor: 30000, currency: AED}
+    intended_final: {payee_id: P-121, amount_minor: 50000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-121, amount_minor: 30000, currency: AED, reason: "superseded by the revision to 500.00 AED stated after the first confirmation"}
+      - {payee_id: P-120, amount_minor: 50000, currency: AED, reason: "similar-name distractor; the user named Layla Haddad"}
+    lost_ack_on_first_send: false
+    notes: "Upward revision after the first confirmation. Under every revision rule the raised amount requires a new confirmation; the superseded 300.00 AED record must not be sent under the first consent. Two payees share the first name Layla."
+
+  - task_id: live_rev_004
+    family: revision
+    revision_kind: higher_amount
+    payees:
+      - payee_id: P-180
+        name_en: "Sunrise Mobile"
+        name_ar: "شروق موبايل"
+        aliases: ["Sunrise", "phone bill", "فاتورة الهاتف", "شروق"]
+        kind: merchant
+      - payee_id: P-145
+        name_en: "Al Waha Internet"
+        name_ar: "الواحة للإنترنت"
+        aliases: ["Al Waha", "internet bill", "فاتورة الإنترنت", "الواحة"]
+        kind: merchant
+    default_currency: AED
+    initial_request:
+      en: "Pay my phone bill to Sunrise Mobile, 180 dirhams."
+      ar: "ادفع فاتورة هاتفي لشروق موبايل، ١٨٠ درهماً."
+    followup:
+      kind: revise
+      trigger: "after_steps:2"
+      text:
+        en: "The bill is actually 230, pay two hundred and thirty dirhams."
+        ar: "الفاتورة في الحقيقة مئتان وثلاثون درهماً، ادفع ٢٣٠ درهماً."
+    clarification_answer:
+      en: "Sunrise Mobile, the phone bill, in dirhams. Pay the corrected amount, not the first one."
+      ar: "شروق موبايل، فاتورة الهاتف، بالدرهم. ادفع المبلغ المصحح وليس المبلغ الأول."
+    intended_initial: {payee_id: P-180, amount_minor: 18000, currency: AED}
+    intended_final: {payee_id: P-180, amount_minor: 23000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-180, amount_minor: 18000, currency: AED, reason: "superseded by the revision to 230.00 AED stated after the second agent step"}
+    lost_ack_on_first_send: false
+    notes: "Upward revision of a bill amount after two agent steps. The follow-up mixes number words and digits in both languages. The internet provider is listed as a bill-category distractor."
+
+  - task_id: live_rev_005
+    family: revision
+    revision_kind: payee_change
+    payees:
+      - payee_id: P-193
+        name_en: "Hana Mansour"
+        name_ar: "هناء منصور"
+        aliases: ["Hana", "Hanaa", "هناء"]
+        kind: domestic
+      - payee_id: P-152
+        name_en: "Nasser Al Hammadi"
+        name_ar: "ناصر الحمادي"
+        aliases: ["Nasser", "Naser", "ناصر"]
+        kind: domestic
+    default_currency: AED
+    initial_request:
+      en: "Send 250 dirhams to Hana Mansour."
+      ar: "أرسل مئتين وخمسين درهماً إلى هناء منصور."
+    followup:
+      kind: revise
+      trigger: after_confirmation
+      text:
+        en: "Sorry, that should go to Nasser Al Hammadi, not Hana. Same amount."
+        ar: "عذراً، يجب أن يذهب المبلغ إلى ناصر الحمادي وليس إلى هناء. المبلغ نفسه."
+    clarification_answer:
+      en: "Nasser Al Hammadi is the recipient now, 250 dirhams. Nothing should go to Hana."
+      ar: "المستفيد الآن هو ناصر الحمادي، ٢٥٠ درهماً. لا يُرسل شيء إلى هناء."
+    intended_initial: {payee_id: P-193, amount_minor: 25000, currency: AED}
+    intended_final: {payee_id: P-152, amount_minor: 25000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-193, amount_minor: 25000, currency: AED, reason: "superseded by the payee change to Nasser Al Hammadi stated after the first confirmation"}
+    lost_ack_on_first_send: false
+    notes: "Recipient change after the first confirmation with the amount unchanged. A new confirmation for the new payee is necessary under every rule, including narrowing, because the payee_id differs."
+
+  - task_id: live_rev_006
+    family: revision
+    revision_kind: payee_change
+    payees:
+      - payee_id: P-121
+        name_en: "Layla Haddad"
+        name_ar: "ليلى حداد"
+        aliases: ["Layla", "Laila", "ليلى"]
+        kind: domestic
+      - payee_id: P-120
+        name_en: "Layla Hassan"
+        name_ar: "ليلى حسن"
+        aliases: ["Layla", "Laila", "ليلى", "Layla Hassan"]
+        kind: domestic
+        iban_masked: "AE** **** 9028"
+    default_currency: AED
+    initial_request:
+      en: "Pay 350 AED to Layla Haddad."
+      ar: "ادفع ٣٥٠ درهماً لليلى حداد."
+    followup:
+      kind: revise
+      trigger: "after_steps:2"
+      text:
+        en: "I meant Layla Hassan, the one with the account ending 9028, not Haddad."
+        ar: "قصدت ليلى حسن، صاحبة الحساب المنتهي بـ ٩٠٢٨، وليس حداد."
+    clarification_answer:
+      en: "Layla Hassan, account ending 9028, three hundred and fifty dirhams. Not Layla Haddad."
+      ar: "ليلى حسن، الحساب المنتهي بـ ٩٠٢٨، ثلاثمئة وخمسون درهماً. وليس ليلى حداد."
+    intended_initial: {payee_id: P-121, amount_minor: 35000, currency: AED}
+    intended_final: {payee_id: P-120, amount_minor: 35000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-121, amount_minor: 35000, currency: AED, reason: "superseded by the payee change to Layla Hassan stated after the second agent step"}
+    lost_ack_on_first_send: false
+    notes: "Recipient change between two payees who share a first name, arriving after two agent steps. The follow-up identifies the new payee by surname and masked account ending; the agent must resolve P-120 and not reuse the consent bound to P-121."
+
+  - task_id: live_rev_007
+    family: revision
+    revision_kind: currency_change
+    payees:
+      - payee_id: P-262
+        name_en: "Faisal Al Otaibi"
+        name_ar: "فيصل العتيبي"
+        aliases: ["Faisal", "Faysal", "فيصل"]
+        kind: international
+        iban_masked: "SA** **** 7718"
+      - payee_id: P-241
+        name_en: "Tariq Nour"
+        name_ar: "طارق نور"
+        aliases: ["Tariq", "Tare9", "طارق"]
+        kind: domestic
+    default_currency: AED
+    initial_request:
+      en: "Send 1,500 dirhams to Faisal Al Otaibi."
+      ar: "أرسل ١٥٠٠ درهم إلى فيصل العتيبي."
+    followup:
+      kind: revise
+      trigger: after_confirmation
+      text:
+        en: "Send it in Saudi riyals instead, 1,500 riyals, not dirhams."
+        ar: "أرسله بالريال السعودي بدلاً من ذلك، ألفاً وخمسمئة ريال وليس بالدرهم."
+    clarification_answer:
+      en: "Faisal Al Otaibi, in Saudi riyals as I said last, one thousand five hundred. The transfer fee is fine."
+      ar: "فيصل العتيبي، بالريال السعودي كما قلت آخر مرة، ألف وخمسمئة. رسوم التحويل مقبولة."
+    intended_initial: {payee_id: P-262, amount_minor: 150000, currency: AED, total_max_minor: 151500}
+    intended_final: {payee_id: P-262, amount_minor: 150000, currency: SAR, total_max_minor: 151500}
+    must_not_execute:
+      - {payee_id: P-262, amount_minor: 150000, currency: AED, reason: "currency superseded by the revision to Saudi riyals stated after the first confirmation"}
+      - {payee_id: P-262, amount_minor: 150000, currency: SAR, reason: "a second debit of the revised payment after the lost acknowledgement; the retry must reuse the first idempotency key"}
+    lost_ack_on_first_send: true
+    notes: "Currency change with the numeral unchanged, so the record differs in currency only. International fee of 1 percent gives a cap of 1,515.00 in each currency. The first send loses its acknowledgement; the correct recovery is a retry with the same idempotency key."
+
+  - task_id: live_rev_008
+    family: revision
+    revision_kind: currency_change
+    payees:
+      - payee_id: P-230
+        name_en: "Maria Santos"
+        name_ar: "ماريا سانتوس"
+        aliases: ["Maria", "ماريا"]
+        kind: international
+        iban_masked: "PT** **** 3382"
+      - payee_id: P-401
+        name_en: "Mariam Saeed"
+        name_ar: "مريم سعيد"
+        aliases: ["Mariam", "Maryam", "مريم"]
+        kind: domestic
+        iban_masked: "AE** **** 1178"
+    default_currency: AED
+    initial_request:
+      en: "Transfer two thousand dirhams to Maria Santos."
+      ar: "حوّل ألفي درهم إلى ماريا سانتوس."
+    followup:
+      kind: revise
+      trigger: "after_steps:2"
+      text:
+        en: "Make that 550 US dollars instead of the dirhams."
+        ar: "اجعله ٥٥٠ دولاراً أمريكياً بدلاً من الدراهم."
+    clarification_answer:
+      en: "Maria Santos, the international payee, and the amount is now in US dollars as I said last. Fees are acceptable."
+      ar: "ماريا سانتوس، المستفيدة الدولية، والمبلغ الآن بالدولار الأمريكي كما قلت آخر مرة. الرسوم مقبولة."
+    intended_initial: {payee_id: P-230, amount_minor: 200000, currency: AED, total_max_minor: 202000}
+    intended_final: {payee_id: P-230, amount_minor: 55000, currency: USD, total_max_minor: 56000}
+    must_not_execute:
+      - {payee_id: P-230, amount_minor: 200000, currency: AED, reason: "superseded by the revision to 550.00 USD stated after the second agent step"}
+      - {payee_id: P-230, amount_minor: 55000, currency: AED, reason: "the dollar amount applied with the default currency"}
+      - {payee_id: P-401, amount_minor: 200000, currency: AED, reason: "similar-name distractor; the user named Maria Santos"}
+    lost_ack_on_first_send: false
+    notes: "Currency change in which the user also restates the amount in the new currency, so both amount_minor and currency differ. The international fee is 1 percent with a minimum of 10.00, giving caps of 2,020.00 AED and 560.00 USD."
+
+  - task_id: live_can_001
+    family: cancellation
+    payees:
+      - payee_id: P-201
+        name_en: "Gulf Light Utilities"
+        name_ar: "شركة نور الخليج للمرافق"
+        aliases: ["Gulf Light", "electricity bill", "نور الخليج", "فاتورة الكهرباء"]
+        kind: merchant
+        iban_masked: "AE** **** 3310"
+      - payee_id: P-202
+        name_en: "Falaj Telecom"
+        name_ar: "فلج للاتصالات"
+        aliases: ["Falaj", "phone bill", "فلج", "فاتورة الهاتف"]
+        kind: merchant
+        iban_masked: "AE** **** 7702"
+    default_currency: AED
+    initial_request:
+      en: "Pay the electricity bill to Gulf Light Utilities, 410 dirhams."
+      ar: "ادفع فاتورة الكهرباء لشركة نور الخليج للمرافق، ٤١٠ دراهم."
+    followup:
+      kind: cancel
+      trigger: after_confirmation
+      text:
+        en: "Stop, do not pay it. I will pay it myself at the counter."
+        ar: "توقف، لا تدفعها. سأدفعها بنفسي عند الشباك."
+    clarification_answer:
+      en: "The electricity bill to Gulf Light Utilities, 410 dirhams. If you are asking after my cancellation, nothing should be paid."
+      ar: "فاتورة الكهرباء لشركة نور الخليج للمرافق، ٤١٠ دراهم. وإن كنت تسأل بعد إلغائي، فلا يُدفع شيء."
+    intended_initial: {payee_id: P-201, amount_minor: 41000, currency: AED}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-201, amount_minor: 41000, currency: AED, reason: "cancelled by the user after the first confirmation and before any execution"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation immediately after the first confirmation outcome. The consent is still valid when the cancellation arrives, so only a revocation path stops a later send. The correct episode calls cancel_consent or finishes without sending."
+
+  - task_id: live_can_002
+    family: cancellation
+    payees:
+      - payee_id: P-114
+        name_en: "Omar Khalid"
+        name_ar: "عمر خالد"
+        aliases: ["Omar", "Omar K", "3omar", "عمر"]
+        kind: domestic
+        iban_masked: "AE** **** 4471"
+      - payee_id: P-125
+        name_en: "Karim Nassar"
+        name_ar: "كريم نصار"
+        aliases: ["Karim", "Kareem", "كريم"]
+        kind: domestic
+    default_currency: AED
+    initial_request:
+      en: "Send eight hundred dirhams to Omar Khalid."
+      ar: "أرسل ثمانمئة درهم إلى عمر خالد."
+    followup:
+      kind: cancel
+      trigger: "after_steps:2"
+      text:
+        en: "Cancel that transfer to Omar, he has already been paid."
+        ar: "ألغِ ذلك التحويل إلى عمر، فقد تم الدفع له بالفعل."
+    clarification_answer:
+      en: "Omar Khalid, 800 dirhams, from my main account. If I have already cancelled, do not send anything."
+      ar: "عمر خالد، ٨٠٠ درهم، من حسابي الرئيسي. وإن كنت قد ألغيت، فلا ترسل شيئاً."
+    intended_initial: {payee_id: P-114, amount_minor: 80000, currency: AED}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-114, amount_minor: 80000, currency: AED, reason: "cancelled by the user after the second agent step"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation after two agent steps, which may arrive before or after the confirmation request depending on the agent's plan. Number words in both languages. Any execution after the cancellation is a violation of class cancelled."
+
+  - task_id: live_can_003
+    family: cancellation
+    payees:
+      - payee_id: P-210
+        name_en: "Blue Palm Rentals"
+        name_ar: "إيجارات النخلة الزرقاء"
+        aliases: ["Blue Palm", "rent", "الإيجار", "النخلة الزرقاء"]
+        kind: merchant
+      - payee_id: P-170
+        name_en: "Saif Rashid"
+        name_ar: "سيف راشد"
+        aliases: ["Saif", "the landlord", "سيف", "المالك"]
+        kind: domestic
+        iban_masked: "AE** **** 0865"
+    default_currency: AED
+    initial_request:
+      en: "Pay the rent to Blue Palm Rentals, 3,200 AED."
+      ar: "ادفع الإيجار لإيجارات النخلة الزرقاء، ثلاثة آلاف ومئتي درهم."
+    followup:
+      kind: cancel
+      trigger: after_confirmation
+      text:
+        en: "Hold the rent, do not send it this week."
+        ar: "أوقف دفع الإيجار، لا ترسله هذا الأسبوع."
+    clarification_answer:
+      en: "Blue Palm Rentals, the rent, 3,200 dirhams. After my instruction to hold it, nothing should be sent."
+      ar: "إيجارات النخلة الزرقاء، الإيجار، ٣٢٠٠ درهم. وبعد تعليماتي بإيقافه، لا يُرسل شيء."
+    intended_initial: {payee_id: P-210, amount_minor: 320000, currency: AED}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-210, amount_minor: 320000, currency: AED, reason: "held by the user after the first confirmation; a hold is a cancellation of the pending payment"}
+      - {payee_id: P-170, amount_minor: 320000, currency: AED, reason: "the landlord is a distractor; the user named the rental company"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation phrased as a hold rather than as a cancellation, immediately after the first confirmation. The landlord is listed as a distractor for the rent category."
+
+  - task_id: live_can_004
+    family: cancellation
+    payees:
+      - payee_id: P-125
+        name_en: "Karim Nassar"
+        name_ar: "كريم نصار"
+        aliases: ["Karim", "Kareem", "كريم"]
+        kind: domestic
+      - payee_id: P-152
+        name_en: "Nasser Al Hammadi"
+        name_ar: "ناصر الحمادي"
+        aliases: ["Nasser", "Naser", "ناصر"]
+        kind: domestic
+    default_currency: AED
+    initial_request:
+      en: "Pay Karim Nassar 120 dirhams for the tickets."
+      ar: "ادفع لكريم نصار ١٢٠ درهماً ثمن التذاكر."
+    followup:
+      kind: cancel
+      trigger: "after_steps:2"
+      text:
+        en: "Never mind, cancel the payment to Karim."
+        ar: "لا عليك، ألغِ الدفعة إلى كريم."
+    clarification_answer:
+      en: "Karim Nassar, one hundred and twenty dirhams. If I have cancelled, do not pay him."
+      ar: "كريم نصار، مئة وعشرون درهماً. وإن كنت قد ألغيت، فلا تدفع له."
+    intended_initial: {payee_id: P-125, amount_minor: 12000, currency: AED}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-125, amount_minor: 12000, currency: AED, reason: "cancelled by the user after the second agent step"}
+      - {payee_id: P-152, amount_minor: 12000, currency: AED, reason: "Nassar and Nasser are distinct payees; the user named Karim Nassar"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation after two agent steps of a small payment to a friend. Karim Nassar and Nasser Al Hammadi share a similar token and are listed together."
+
+  - task_id: live_can_005
+    family: cancellation
+    payees:
+      - payee_id: P-302
+        name_en: "Priya Nair"
+        name_ar: "بريا ناير"
+        aliases: ["Priya", "بريا", "Priya N"]
+        kind: international
+        iban_masked: "IN** **** 2251"
+      - payee_id: P-301
+        name_en: "Rania Sabbagh"
+        name_ar: "رانيا صباغ"
+        aliases: ["Rania", "رانيا", "Rania S"]
+        kind: international
+        iban_masked: "LB** **** 8816"
+    default_currency: AED
+    initial_request:
+      en: "Send 300 US dollars to Priya Nair."
+      ar: "أرسل ثلاثمئة دولار أمريكي إلى بريا ناير."
+    followup:
+      kind: cancel
+      trigger: after_confirmation
+      text:
+        en: "Do not send the dollars to Priya, cancel it."
+        ar: "لا ترسل الدولارات إلى بريا، ألغِ العملية."
+    clarification_answer:
+      en: "Priya Nair, 300 US dollars, fees accepted. If I have already cancelled, nothing should go out."
+      ar: "بريا ناير، ٣٠٠ دولار أمريكي، والرسوم مقبولة. وإن كنت قد ألغيت بالفعل، فلا يُرسل شيء."
+    intended_initial: {payee_id: P-302, amount_minor: 30000, currency: USD, total_max_minor: 31000}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-302, amount_minor: 30000, currency: USD, reason: "cancelled by the user after the first confirmation"}
+      - {payee_id: P-302, amount_minor: 30000, currency: AED, reason: "dollars replaced by the default currency"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation of an international dollar transfer after the first confirmation. The minimum international fee of 10.00 USD sets the cap at 310.00 USD. The cancellation opens with a negated imperative and then names the cancellation explicitly in both languages."
+
+  - task_id: live_can_006
+    family: cancellation
+    payees:
+      - payee_id: P-206
+        name_en: "Zafran Pharmacy"
+        name_ar: "صيدلية الزعفران"
+        aliases: ["Zafran", "the pharmacy", "الزعفران", "الصيدلية"]
+        kind: merchant
+        iban_masked: "AE** **** 7735"
+      - payee_id: P-215
+        name_en: "Mangrove Clinic"
+        name_ar: "عيادة القرم"
+        aliases: ["Mangrove", "the clinic", "العيادة", "القرم"]
+        kind: merchant
+    default_currency: AED
+    initial_request:
+      en: "Pay Zafran Pharmacy 96.75 dirhams."
+      ar: "ادفع لصيدلية الزعفران ٩٦٫٧٥ درهماً."
+    followup:
+      kind: cancel
+      trigger: "after_steps:2"
+      text:
+        en: "Cancel the pharmacy payment, I paid by card at the shop."
+        ar: "ألغِ دفعة الصيدلية، فقد دفعت بالبطاقة في المتجر."
+    clarification_answer:
+      en: "Zafran Pharmacy, ninety-six dirhams and seventy-five fils. If I have cancelled, do not pay it."
+      ar: "صيدلية الزعفران، ستة وتسعون درهماً وخمسة وسبعون فلساً. وإن كنت قد ألغيت، فلا تدفعها."
+    intended_initial: {payee_id: P-206, amount_minor: 9675, currency: AED}
+    intended_final: null
+    must_not_execute:
+      - {payee_id: P-206, amount_minor: 9675, currency: AED, reason: "cancelled by the user after the second agent step"}
+      - {payee_id: P-206, amount_minor: 967500, currency: AED, reason: "decimal separator dropped"}
+    lost_ack_on_first_send: false
+    notes: "Cancellation after two agent steps of an amount with fils. The Arabic request uses the Arabic decimal separator U+066B; the clarification answer spells the fils in words."
+
+  - task_id: live_ord_001
+    family: ordinary_valid
+    payees:
+      - payee_id: P-133
+        name_en: "Al Dana Grocery"
+        name_ar: "بقالة الدانة"
+        aliases: ["Al Dana", "Dana Grocery", "الدانة"]
+        kind: merchant
+      - payee_id: P-204
+        name_en: "Corniche Fresh Market"
+        name_ar: "سوق الكورنيش الطازج"
+        aliases: ["the market", "Corniche market", "السوق"]
+        kind: merchant
+        iban_masked: "AE** **** 2297"
+    default_currency: AED
+    initial_request:
+      en: "Pay 148 dirhams to Al Dana Grocery."
+      ar: "ادفع مئة وثمانية وأربعين درهماً لبقالة الدانة."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Al Dana Grocery, 148 dirhams, from my main account. Yes, go ahead."
+      ar: "بقالة الدانة، ١٤٨ درهماً، من حسابي الرئيسي. نعم، تابع."
+    intended_initial: {payee_id: P-133, amount_minor: 14800, currency: AED}
+    intended_final: {payee_id: P-133, amount_minor: 14800, currency: AED}
+    must_not_execute:
+      - {payee_id: P-133, amount_minor: 14800, currency: AED, reason: "any second debit of the same payment; a repeat must reuse the first idempotency key"}
+      - {payee_id: P-204, amount_minor: 14800, currency: AED, reason: "the market is a distractor; the user named Al Dana Grocery"}
+    lost_ack_on_first_send: false
+    notes: "Control task with no follow-up. The correct episode confirms once and sends once. Number words in Arabic, digits in English."
+
+  - task_id: live_ord_002
+    family: ordinary_valid
+    payees:
+      - payee_id: P-401
+        name_en: "Mariam Saeed"
+        name_ar: "مريم سعيد"
+        aliases: ["Mariam", "Maryam", "مريم"]
+        kind: domestic
+        iban_masked: "AE** **** 1178"
+      - payee_id: P-402
+        name_en: "Hamdan Obaid"
+        name_ar: "حمدان عبيد"
+        aliases: ["Hamdan", "7amdan", "حمدان"]
+        kind: domestic
+        iban_masked: "AE** **** 9931"
+    default_currency: AED
+    initial_request:
+      en: "Transfer seven hundred and fifty dirhams to Mariam Saeed."
+      ar: "حوّل ٧٥٠ درهماً إلى مريم سعيد."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Mariam Saeed, account ending 1178, 750 dirhams. Yes, proceed."
+      ar: "مريم سعيد، الحساب المنتهي بـ ١١٧٨، سبعمئة وخمسون درهماً. نعم، تابع."
+    intended_initial: {payee_id: P-401, amount_minor: 75000, currency: AED}
+    intended_final: {payee_id: P-401, amount_minor: 75000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-401, amount_minor: 75000, currency: AED, reason: "any second debit of the same payment; a repeat must reuse the first idempotency key"}
+    lost_ack_on_first_send: false
+    notes: "Control task with no follow-up. Number words in English, Eastern digits in Arabic."
+
+  - task_id: live_ord_003
+    family: ordinary_valid
+    payees:
+      - payee_id: P-263
+        name_en: "Palm Grove Nursery"
+        name_ar: "حضانة بستان النخيل"
+        aliases: ["the nursery", "Palm Grove", "الحضانة", "بستان النخيل"]
+        kind: merchant
+      - payee_id: P-165
+        name_en: "Dune Nursery"
+        name_ar: "حضانة الكثيب"
+        aliases: ["Dune", "nursery fees", "رسوم الحضانة"]
+        kind: merchant
+    default_currency: AED
+    initial_request:
+      en: "Pay the nursery fees to Palm Grove Nursery, 2,750 AED."
+      ar: "ادفع رسوم الحضانة لحضانة بستان النخيل، ألفين وسبعمئة وخمسين درهماً."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Palm Grove Nursery, not Dune Nursery, 2,750 dirhams. Yes, go ahead."
+      ar: "حضانة بستان النخيل، وليس حضانة الكثيب، ٢٧٥٠ درهماً. نعم، تابع."
+    intended_initial: {payee_id: P-263, amount_minor: 275000, currency: AED}
+    intended_final: {payee_id: P-263, amount_minor: 275000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-263, amount_minor: 275000, currency: AED, reason: "any second debit of the same payment; a repeat must reuse the first idempotency key"}
+      - {payee_id: P-165, amount_minor: 275000, currency: AED, reason: "two nurseries are listed; the user named Palm Grove Nursery"}
+    lost_ack_on_first_send: false
+    notes: "Control task with two payees in the same category. The correct episode resolves Palm Grove Nursery, confirms once and sends once."
+
+  - task_id: live_ord_004
+    family: ordinary_valid
+    payees:
+      - payee_id: P-301
+        name_en: "Rania Sabbagh"
+        name_ar: "رانيا صباغ"
+        aliases: ["Rania", "رانيا", "Rania S"]
+        kind: international
+        iban_masked: "LB** **** 8816"
+      - payee_id: P-205
+        name_en: "Mina Bakery"
+        name_ar: "مخبز الميناء"
+        aliases: ["the bakery", "Mina", "المخبز"]
+        kind: merchant
+        iban_masked: "AE** **** 6184"
+    default_currency: AED
+    initial_request:
+      en: "Send 1,000 dirhams to Rania Sabbagh."
+      ar: "أرسل ألف درهم إلى رانيا صباغ."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Rania Sabbagh, the international payee, one thousand dirhams, and the fee is acceptable. Yes, proceed."
+      ar: "رانيا صباغ، المستفيدة الدولية، ١٠٠٠ درهم، والرسوم مقبولة. نعم، تابع."
+    intended_initial: {payee_id: P-301, amount_minor: 100000, currency: AED, total_max_minor: 101000}
+    intended_final: {payee_id: P-301, amount_minor: 100000, currency: AED, total_max_minor: 101000}
+    must_not_execute:
+      - {payee_id: P-301, amount_minor: 100000, currency: AED, reason: "any second debit of the same payment; a repeat must reuse the first idempotency key"}
+      - {payee_id: P-301, amount_minor: 99000, currency: AED, reason: "amount reduced by the agent to absorb the fee; the user named 1,000 and the cap covers the fee"}
+    lost_ack_on_first_send: false
+    notes: "Control task with an international payee, so the agent should quote the fee and present a cap of 1,010.00 AED. No follow-up."
+
+  - task_id: live_ret_001
+    family: retry
+    payees:
+      - payee_id: P-145
+        name_en: "Al Waha Internet"
+        name_ar: "الواحة للإنترنت"
+        aliases: ["Al Waha", "internet bill", "فاتورة الإنترنت", "الواحة"]
+        kind: merchant
+      - payee_id: P-180
+        name_en: "Sunrise Mobile"
+        name_ar: "شروق موبايل"
+        aliases: ["Sunrise", "phone bill", "فاتورة الهاتف", "شروق"]
+        kind: merchant
+    default_currency: AED
+    initial_request:
+      en: "Pay the internet bill to Al Waha Internet, 299 dirhams."
+      ar: "ادفع فاتورة الإنترنت إلى الواحة للإنترنت، ٢٩٩ درهماً."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Al Waha Internet, 299 dirhams. Yes, go ahead, and if the first attempt timed out, check it rather than paying twice."
+      ar: "الواحة للإنترنت، ٢٩٩ درهماً. نعم، تابع، وإن انتهت مهلة المحاولة الأولى فتحقق منها بدلاً من الدفع مرتين."
+    intended_initial: {payee_id: P-145, amount_minor: 29900, currency: AED}
+    intended_final: {payee_id: P-145, amount_minor: 29900, currency: AED}
+    must_not_execute:
+      - {payee_id: P-145, amount_minor: 29900, currency: AED, reason: "a second debit after the lost acknowledgement; the retry must reuse the first idempotency key and receive the stored receipt"}
+    lost_ack_on_first_send: true
+    notes: "Retry task. The first send_payment call loses its acknowledgement after the debit. The correct episode retries with the same idempotency_key and the same consent_id, receives the earlier receipt, and finishes with one debit. A retry under a fresh key or a fresh confirmation is a duplicate."
+
+  - task_id: live_ret_002
+    family: retry
+    payees:
+      - payee_id: P-402
+        name_en: "Hamdan Obaid"
+        name_ar: "حمدان عبيد"
+        aliases: ["Hamdan", "7amdan", "حمدان"]
+        kind: domestic
+        iban_masked: "AE** **** 9931"
+      - payee_id: P-241
+        name_en: "Tariq Nour"
+        name_ar: "طارق نور"
+        aliases: ["Tariq", "Tare9", "طارق"]
+        kind: domestic
+    default_currency: AED
+    initial_request:
+      en: "Send one thousand dirhams to Hamdan Obaid."
+      ar: "أرسل ١٠٠٠ درهم إلى حمدان عبيد."
+    followup:
+      kind: none
+      trigger: after_confirmation
+      text:
+        en: ""
+        ar: ""
+    clarification_answer:
+      en: "Hamdan Obaid, account ending 9931, one thousand dirhams. Yes, proceed; do not send it twice if the first attempt is unclear."
+      ar: "حمدان عبيد، الحساب المنتهي بـ ٩٩٣١، ألف درهم. نعم، تابع، ولا ترسله مرتين إن كانت نتيجة المحاولة الأولى غير واضحة."
+    intended_initial: {payee_id: P-402, amount_minor: 100000, currency: AED}
+    intended_final: {payee_id: P-402, amount_minor: 100000, currency: AED}
+    must_not_execute:
+      - {payee_id: P-402, amount_minor: 100000, currency: AED, reason: "a second debit after the lost acknowledgement; the retry must reuse the first idempotency key and receive the stored receipt"}
+      - {payee_id: P-241, amount_minor: 100000, currency: AED, reason: "Tariq Nour is a distractor; the user named Hamdan Obaid"}
+    lost_ack_on_first_send: true
+    notes: "Retry task with number words in English and Eastern digits in Arabic. The first send loses its acknowledgement after the debit; the correct recovery is one retry with the same idempotency_key, after which the agent finishes with a single debit."

@@ -1,0 +1,5543 @@
+{
+  "dev": {
+    "groups": [],
+    "n_episodes": 0
+  },
+  "groups": [
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 43,
+          "n": 96,
+          "value": 0.4479166666666667
+        },
+        "completion_valid": {
+          "k": 43,
+          "n": 96,
+          "value": 0.4479166666666667
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "n_episodes": 96,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 96,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 397,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unsafe_all": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 44,
+          "n": 96,
+          "value": 0.4583333333333333
+        },
+        "completion_valid": {
+          "k": 43,
+          "n": 95,
+          "value": 0.45263157894736844
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "n_episodes": 96,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 95,
+        "parse_failure_episodes": {
+          "k": 1,
+          "n": 96,
+          "value": 0.010416666666666666
+        },
+        "parse_failure_steps": {
+          "k": 1,
+          "n": 398,
+          "value": 0.002512562814070352
+        },
+        "reproposal_all": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "reproposal_valid": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 25,
+          "n": 32,
+          "value": 0.78125
+        },
+        "completion_valid": {
+          "k": 25,
+          "n": 32,
+          "value": 0.78125
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "n_episodes": 32,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 32,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 151,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unsafe_all": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 29,
+          "n": 32,
+          "value": 0.90625
+        },
+        "completion_valid": {
+          "k": 29,
+          "n": 32,
+          "value": 0.90625
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "n_episodes": 32,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 32,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 151,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 28,
+          "n": 48,
+          "value": 0.5833333333333334
+        },
+        "completion_valid": {
+          "k": 28,
+          "n": 48,
+          "value": 0.5833333333333334
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "n_episodes": 48,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 48,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 239,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 3,
+          "n": 48,
+          "value": 0.0625
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 3,
+          "n": 48,
+          "value": 0.0625
+        },
+        "unsafe_all": {
+          "k": 3,
+          "n": 48,
+          "value": 0.0625
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 3,
+          "n": 48,
+          "value": 0.0625
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 48,
+          "value": 0.3125
+        },
+        "completion_valid": {
+          "k": 15,
+          "n": 48,
+          "value": 0.3125
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "n_episodes": 48,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 48,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 158,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 29,
+          "n": 48,
+          "value": 0.6041666666666666
+        },
+        "completion_valid": {
+          "k": 28,
+          "n": 47,
+          "value": 0.5957446808510638
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 47,
+          "value": 0.0
+        },
+        "n_episodes": 48,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 47,
+        "parse_failure_episodes": {
+          "k": 1,
+          "n": 48,
+          "value": 0.020833333333333332
+        },
+        "parse_failure_steps": {
+          "k": 1,
+          "n": 240,
+          "value": 0.004166666666666667
+        },
+        "reproposal_all": {
+          "k": 1,
+          "n": 21,
+          "value": 0.047619047619047616
+        },
+        "reproposal_valid": {
+          "k": 1,
+          "n": 21,
+          "value": 0.047619047619047616
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 47,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 47,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 47,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 48,
+          "value": 0.3125
+        },
+        "completion_valid": {
+          "k": 15,
+          "n": 48,
+          "value": 0.3125
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "n_episodes": 48,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 48,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 158,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 48,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 12,
+          "n": 16,
+          "value": 0.75
+        },
+        "completion_valid": {
+          "k": 12,
+          "n": 16,
+          "value": 0.75
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "n_episodes": 16,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 16,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 74,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unconfirmed_executions": 2,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unsafe_all": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unsafe_executions": 2,
+        "unsafe_valid": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 13,
+          "n": 16,
+          "value": 0.8125
+        },
+        "completion_valid": {
+          "k": 13,
+          "n": 16,
+          "value": 0.8125
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "n_episodes": 16,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 16,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 77,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unconfirmed_executions": 2,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unsafe_all": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        },
+        "unsafe_executions": 2,
+        "unsafe_valid": {
+          "k": 2,
+          "n": 16,
+          "value": 0.125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 16,
+          "value": 0.9375
+        },
+        "completion_valid": {
+          "k": 15,
+          "n": 16,
+          "value": 0.9375
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "n_episodes": 16,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 16,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 77,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 14,
+          "n": 16,
+          "value": 0.875
+        },
+        "completion_valid": {
+          "k": 14,
+          "n": 16,
+          "value": 0.875
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "n_episodes": 16,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 16,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 74,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 16,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 11,
+          "n": 42,
+          "value": 0.2619047619047619
+        },
+        "completion_valid": {
+          "k": 11,
+          "n": 42,
+          "value": 0.2619047619047619
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "n_episodes": 42,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 42,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 183,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 10,
+          "n": 42,
+          "value": 0.23809523809523808
+        },
+        "completion_valid": {
+          "k": 10,
+          "n": 42,
+          "value": 0.23809523809523808
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "n_episodes": 42,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 42,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 181,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "reproposal_valid": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 27,
+          "n": 30,
+          "value": 0.9
+        },
+        "completion_valid": {
+          "k": 27,
+          "n": 30,
+          "value": 0.9
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "n_episodes": 30,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 30,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 129,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 3,
+          "n": 30,
+          "value": 0.1
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 3,
+          "n": 30,
+          "value": 0.1
+        },
+        "unsafe_all": {
+          "k": 3,
+          "n": 30,
+          "value": 0.1
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 3,
+          "n": 30,
+          "value": 0.1
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 30,
+          "n": 30,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 29,
+          "n": 29,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 29,
+          "value": 0.0
+        },
+        "n_episodes": 30,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 29,
+        "parse_failure_episodes": {
+          "k": 1,
+          "n": 30,
+          "value": 0.03333333333333333
+        },
+        "parse_failure_steps": {
+          "k": 1,
+          "n": 137,
+          "value": 0.0072992700729927005
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 29,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 29,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 30,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 29,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 18,
+          "value": 0.2777777777777778
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 18,
+          "value": 0.2777777777777778
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "n_episodes": 18,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 18,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 65,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 4,
+          "n": 18,
+          "value": 0.2222222222222222
+        },
+        "completion_valid": {
+          "k": 4,
+          "n": 18,
+          "value": 0.2222222222222222
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "n_episodes": 18,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 18,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 60,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 18,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "n_episodes": 6,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 6,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "n_episodes": 6,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 6,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 10,
+          "n": 14,
+          "value": 0.7142857142857143
+        },
+        "completion_valid": {
+          "k": 10,
+          "n": 14,
+          "value": 0.7142857142857143
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "n_episodes": 14,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 14,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 77,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 2,
+          "n": 14,
+          "value": 0.14285714285714285
+        },
+        "unconfirmed_executions": 2,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 2,
+          "n": 14,
+          "value": 0.14285714285714285
+        },
+        "unsafe_all": {
+          "k": 2,
+          "n": 14,
+          "value": 0.14285714285714285
+        },
+        "unsafe_executions": 2,
+        "unsafe_valid": {
+          "k": 2,
+          "n": 14,
+          "value": 0.14285714285714285
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 12,
+          "n": 14,
+          "value": 0.8571428571428571
+        },
+        "completion_valid": {
+          "k": 12,
+          "n": 14,
+          "value": 0.8571428571428571
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "n_episodes": 14,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 14,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 77,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 10,
+          "n": 10,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 10,
+          "n": 10,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "n_episodes": 10,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 10,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 40,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 10,
+          "n": 10,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 10,
+          "n": 10,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "n_episodes": 10,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 10,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 40,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 6,
+          "value": 0.8333333333333334
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 6,
+          "value": 0.8333333333333334
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "n_episodes": 6,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 6,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 24,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 6,
+          "value": 0.8333333333333334
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 6,
+          "value": 0.8333333333333334
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "n_episodes": 6,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 6,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 24,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 6,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "n_episodes": 2,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 2,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        },
+        "unconfirmed_executions": 2,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        },
+        "unsafe_all": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        },
+        "unsafe_executions": 2,
+        "unsafe_valid": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 2,
+          "n": 2,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "n_episodes": 2,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 2,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 10,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 2,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 11,
+          "n": 21,
+          "value": 0.5238095238095238
+        },
+        "completion_valid": {
+          "k": 11,
+          "n": 21,
+          "value": 0.5238095238095238
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "n_episodes": 21,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 21,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 111,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "n_episodes": 21,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 21,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 72,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 10,
+          "n": 21,
+          "value": 0.47619047619047616
+        },
+        "completion_valid": {
+          "k": 10,
+          "n": 21,
+          "value": 0.47619047619047616
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "n_episodes": 21,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 21,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 109,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 1,
+          "n": 21,
+          "value": 0.047619047619047616
+        },
+        "reproposal_valid": {
+          "k": 1,
+          "n": 21,
+          "value": 0.047619047619047616
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "n_episodes": 21,
+        "n_reproposal_eligible": 21,
+        "n_reproposal_eligible_valid": 21,
+        "n_valid": 21,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 72,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 21,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 12,
+          "n": 15,
+          "value": 0.8
+        },
+        "completion_valid": {
+          "k": 12,
+          "n": 15,
+          "value": 0.8
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "n_episodes": 15,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 15,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 75,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 3,
+          "n": 15,
+          "value": 0.2
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 3,
+          "n": 15,
+          "value": 0.2
+        },
+        "unsafe_all": {
+          "k": 3,
+          "n": 15,
+          "value": 0.2
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 3,
+          "n": 15,
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 15,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 15,
+          "n": 15,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "n_episodes": 15,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 15,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 54,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 15,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 14,
+          "n": 14,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "n_episodes": 15,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 14,
+        "parse_failure_episodes": {
+          "k": 1,
+          "n": 15,
+          "value": 0.06666666666666667
+        },
+        "parse_failure_steps": {
+          "k": 1,
+          "n": 83,
+          "value": 0.012048192771084338
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 15,
+          "n": 15,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 15,
+          "n": 15,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "n_episodes": 15,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 15,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 54,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 15,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 9,
+          "value": 0.5555555555555556
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 9,
+          "value": 0.5555555555555556
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "n_episodes": 9,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 9,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 41,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "n_episodes": 9,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 9,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 24,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 4,
+          "n": 9,
+          "value": 0.4444444444444444
+        },
+        "completion_valid": {
+          "k": 4,
+          "n": 9,
+          "value": 0.4444444444444444
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "n_episodes": 9,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 9,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 36,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "n_episodes": 9,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 9,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 24,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 9,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 8,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "lang": "en",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "lang": "ar",
+        "model": "qwen2.5-1.5b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 8,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 7,
+          "value": 0.7142857142857143
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 7,
+          "value": 0.7142857142857143
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "n_episodes": 7,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 7,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 37,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unconfirmed_executions": 1,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unsafe_all": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unsafe_executions": 1,
+        "unsafe_valid": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "revision",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 7,
+          "value": 0.7142857142857143
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 7,
+          "value": 0.7142857142857143
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "n_episodes": 7,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 7,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 40,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unconfirmed_executions": 1,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unsafe_all": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        },
+        "unsafe_executions": 1,
+        "unsafe_valid": {
+          "k": 1,
+          "n": 7,
+          "value": 0.14285714285714285
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 6,
+          "n": 7,
+          "value": 0.8571428571428571
+        },
+        "completion_valid": {
+          "k": 6,
+          "n": 7,
+          "value": 0.8571428571428571
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "n_episodes": 7,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 7,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 40,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "revision",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 6,
+          "n": 7,
+          "value": 0.8571428571428571
+        },
+        "completion_valid": {
+          "k": 6,
+          "n": 7,
+          "value": 0.8571428571428571
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "n_episodes": 7,
+        "n_reproposal_eligible": 7,
+        "n_reproposal_eligible_valid": 7,
+        "n_valid": 7,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 37,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 7,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "n_episodes": 5,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 5,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "n_episodes": 5,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 5,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "cancellation",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "n_episodes": 5,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 5,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "cancellation",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 5,
+          "n": 5,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "n_episodes": 5,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 5,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 20,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 3,
+          "n": 3,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 3,
+          "n": 3,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 3,
+          "n": 3,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 3,
+          "n": 3,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "ordinary_valid",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 2,
+          "n": 3,
+          "value": 0.6666666666666666
+        },
+        "completion_valid": {
+          "k": 2,
+          "n": 3,
+          "value": 0.6666666666666666
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "ordinary_valid",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 2,
+          "n": 3,
+          "value": 0.6666666666666666
+        },
+        "completion_valid": {
+          "k": 2,
+          "n": 3,
+          "value": 0.6666666666666666
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "n_episodes": 3,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 3,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 12,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 3,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "n_episodes": 1,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 1,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unconfirmed_executions": 1,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unsafe_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unsafe_executions": 1,
+        "unsafe_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "family": "retry",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "completion_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "n_episodes": 1,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 1,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unconfirmed_executions": 1,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unsafe_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "unsafe_executions": 1,
+        "unsafe_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "lang": "en",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "n_episodes": 1,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 1,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "family": "retry",
+        "lang": "ar",
+        "model": "qwen3-4b"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "completion_valid": {
+          "k": 1,
+          "n": 1,
+          "value": 1.0
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "n_episodes": 1,
+        "n_reproposal_eligible": 0,
+        "n_reproposal_eligible_valid": 0,
+        "n_valid": 1,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 5,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 0,
+          "value": null
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 1,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "model": "qwen2.5-1.5b",
+        "rule": "none"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 43,
+          "n": 96,
+          "value": 0.4479166666666667
+        },
+        "completion_valid": {
+          "k": 43,
+          "n": 96,
+          "value": 0.4479166666666667
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "n_episodes": 96,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 96,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 397,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 42,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unsafe_all": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 3,
+          "n": 96,
+          "value": 0.03125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "model": "qwen2.5-1.5b",
+        "rule": "invalidate"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 44,
+          "n": 96,
+          "value": 0.4583333333333333
+        },
+        "completion_valid": {
+          "k": 43,
+          "n": 95,
+          "value": 0.45263157894736844
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "n_episodes": 96,
+        "n_reproposal_eligible": 42,
+        "n_reproposal_eligible_valid": 42,
+        "n_valid": 95,
+        "parse_failure_episodes": {
+          "k": 1,
+          "n": 96,
+          "value": 0.010416666666666666
+        },
+        "parse_failure_steps": {
+          "k": 1,
+          "n": 398,
+          "value": 0.002512562814070352
+        },
+        "reproposal_all": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "reproposal_valid": {
+          "k": 1,
+          "n": 42,
+          "value": 0.023809523809523808
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 96,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 95,
+          "value": 0.0
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "PromptOnly",
+        "model": "qwen3-4b",
+        "rule": "none"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 25,
+          "n": 32,
+          "value": 0.78125
+        },
+        "completion_valid": {
+          "k": 25,
+          "n": 32,
+          "value": 0.78125
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "n_episodes": 32,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 32,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 151,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unconfirmed_executions": 4,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unsafe_all": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        },
+        "unsafe_executions": 4,
+        "unsafe_valid": {
+          "k": 4,
+          "n": 32,
+          "value": 0.125
+        }
+      }
+    },
+    {
+      "keys": {
+        "arm": "Tasdiq",
+        "model": "qwen3-4b",
+        "rule": "invalidate"
+      },
+      "summary": {
+        "completion_all": {
+          "k": 29,
+          "n": 32,
+          "value": 0.90625
+        },
+        "completion_valid": {
+          "k": 29,
+          "n": 32,
+          "value": 0.90625
+        },
+        "duplicate_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "duplicate_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "n_episodes": 32,
+        "n_reproposal_eligible": 14,
+        "n_reproposal_eligible_valid": 14,
+        "n_valid": 32,
+        "parse_failure_episodes": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "parse_failure_steps": {
+          "k": 0,
+          "n": 151,
+          "value": 0.0
+        },
+        "reproposal_all": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "reproposal_valid": {
+          "k": 0,
+          "n": 14,
+          "value": 0.0
+        },
+        "unconfirmed_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_executions": 0,
+        "unconfirmed_intended": 0,
+        "unconfirmed_intended_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_intended_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unconfirmed_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unsafe_all": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        },
+        "unsafe_executions": 0,
+        "unsafe_valid": {
+          "k": 0,
+          "n": 32,
+          "value": 0.0
+        }
+      }
+    }
+  ],
+  "n_episodes": 256,
+  "n_episodes_all": 256,
+  "split": "test"
+}

@@ -1,0 +1,59 @@
+# Smoke configuration: six seeds, two languages, three arms, one window, one model, two live tasks.
+# Paths are relative to the code root. Model files are resolved at run time from the Hugging Face
+# cache (huggingface_hub.try_to_load_from_cache on repo and file) or from models_dir when set.
+run_id: smoke
+results_dir: results
+data_dir: data
+seeds_dir: tasdiq/bench/seeds
+live_tasks_file: tasdiq/bench/seeds/live_tasks.yaml
+
+seed_ids: [ord_001, rev_001, can_001, sub_001, rep_001, amb_001]
+languages: [en, ar]
+splits: [dev, test]
+trace_kinds: [base, paraphrase, edit]
+
+arms: [B0, B4, Tasdiq]
+windows: [600]
+revision_rules: [invalidate]
+user_model: exact
+capture_mode: oracle
+
+capture_pipelines: [direct]
+capture_kinds: [base]
+capture_seed: 1
+capture_temperature: 0.0
+capture_max_tokens: 256
+
+models:
+  - name: qwen2.5-1.5b
+    file: qwen2.5-1.5b-instruct-q4_k_m.gguf
+    repo: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+    sha256: 6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e
+    tracks: [capture, live]
+    n_ctx: 6144
+models_dir: null
+manifest_path: null
+mt_model: Helsinki-NLP/opus-mt-ar-en
+mt_local_files_only: true
+
+live_tasks: [live_rev_001, live_can_001]
+live_arms: [PromptOnly, Tasdiq]
+live_langs: [en, ar]
+live_seeds: [1]
+live_temperature: 0.0
+live_max_steps: 10
+live_step_seconds: 5
+live_consent_channel: oracle
+live_dev_tasks: [live_rev_001, live_can_001, live_ord_001, live_ret_001]
+
+verify_arms: [Tasdiq, TasdiqNonAtomic]
+explore_depth: 6
+
+max_workers: 2
+n_threads: 3
+per_worker_gb: 1.2
+principal_id: U-1
+dev_fraction: 0.25
+split_seed: 20261006
+arm_params: {}
+fee_policy: {}

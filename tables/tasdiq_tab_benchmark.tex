@@ -1,0 +1,37 @@
+% Benchmark composition: counts are integers; n/a marks a count absent from the ledger.
+\begin{tabular}{lrrrr}
+\toprule
+family & seeds & variants & &  \\
+\midrule
+\multicolumn{5}{l}{\emph{Seeds and variants per family}} \\
+ambiguous & <<bench_seeds_ambiguous>> & <<bench_variants_ambiguous>> & & \\
+amount\_currency\_change & <<bench_seeds_amount_currency_change>> & <<bench_variants_amount_currency_change>> & & \\
+batch\_scope & <<bench_seeds_batch_scope>> & <<bench_variants_batch_scope>> & & \\
+cancellation & <<bench_seeds_cancellation>> & <<bench_variants_cancellation>> & & \\
+cross\_turn\_reference & <<bench_seeds_cross_turn_reference>> & <<bench_variants_cross_turn_reference>> & & \\
+expiry\_stale & <<bench_seeds_expiry_stale>> & <<bench_variants_expiry_stale>> & & \\
+negation & <<bench_seeds_negation>> & <<bench_variants_negation>> & & \\
+numerals\_currency & <<bench_seeds_numerals_currency>> & <<bench_variants_numerals_currency>> & & \\
+ordinary\_valid & <<bench_seeds_ordinary_valid>> & <<bench_variants_ordinary_valid>> & & \\
+recipient\_substitution & <<bench_seeds_recipient_substitution>> & <<bench_variants_recipient_substitution>> & & \\
+repeated\_execution & <<bench_seeds_repeated_execution>> & <<bench_variants_repeated_execution>> & & \\
+revision & <<bench_seeds_revision>> & <<bench_variants_revision>> & & \\
+total\_cost\_change & <<bench_seeds_total_cost_change>> & <<bench_variants_total_cost_change>> & & \\
+untrusted\_consent & <<bench_seeds_untrusted_consent>> & <<bench_variants_untrusted_consent>> & & \\
+view\_vs\_pay & <<bench_seeds_view_vs_pay>> & <<bench_variants_view_vs_pay>> & & \\
+total & <<bench_seeds_total>> & <<bench_variants_total>> & & \\
+\midrule
+\multicolumn{5}{l}{\emph{Variants per language and kind}} \\
+language & base & paraphrase & edit & total \\
+English & <<bench_variants_en_base>> & <<bench_variants_en_paraphrase>> & <<bench_variants_en_edit>> & <<bench_variants_en>> \\
+Arabic & <<bench_variants_ar_base>> & <<bench_variants_ar_paraphrase>> & <<bench_variants_ar_edit>> & <<bench_variants_ar>> \\
+Code-switched & <<bench_variants_mix_base>> & <<bench_variants_mix_paraphrase>> & <<bench_variants_mix_edit>> & <<bench_variants_mix>> \\
+\midrule
+\multicolumn{5}{l}{\emph{Splits and review}} \\
+dev (seeds, variants) & <<bench_seeds_dev>> & <<bench_variants_dev>> & & \\
+test (seeds, variants) & <<bench_seeds_test>> & <<bench_variants_test>> & & \\
+excluded variants (near duplicates) & <<bench_variants_excluded>> & & & \\
+review status unreviewed (variants) & <<bench_review_status_unreviewed>> & & & \\
+author review set (rows) & <<bench_review_rows>> & & & \\
+\bottomrule
+\end{tabular}

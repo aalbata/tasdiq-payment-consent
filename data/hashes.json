@@ -1,0 +1,10 @@
+{
+  "adjudication_sheet.csv": "d52abb8b2bd766d67adaf089e2a339613015158add2447b139387a51038e5699",
+  "annotation_guide.md": "038f734995bf038b5f903d90a7474b782bce99eb36cd11af516f17e3b80e6c88",
+  "benchmark.jsonl": "2a685581e63cee9ac06c5071d332e1cc6ad34fb19dd5dac441d27e80a1342f6b",
+  "build_report.json": "cfb49063e179e848472dc3503d4298aee78d2ba5bac9f75030e215cc2db60e5c",
+  "dialect_extra.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "review_set.csv": "551f7737f2ff401b3124eb345cf04ab614770602fd148ee5a37bc236e2d3c5e0",
+  "scenarios.jsonl": "e9ce990044f4834aee8c998b96633af555e7463b59079fbfcf6e38c7c7638a16",
+  "splits.json": "b645145758f87d0f2fad09a65f9b3f5067767a45416d7b75b0d85aa9cf30b6cd"
+}
